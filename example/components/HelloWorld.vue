@@ -1,6 +1,16 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <pr-country
+      :plainOptions="[
+        { name: '中国', value: 1 },
+        { name: '日本', value: 2 },
+        { name: '韩国', value: 3 },
+      ]"
+      :fnSureClick="fnSureClick"
+    >
+      <template v-slot>全部</template>
+    </pr-country>
+    <!-- <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -98,7 +108,7 @@
           >awesome-vue</a
         >
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
@@ -107,6 +117,9 @@ export default {
   name: "HelloWorld",
   props: {
     msg: String,
+  },
+  methods: {
+    fnSureClick() {},
   },
 };
 </script>
