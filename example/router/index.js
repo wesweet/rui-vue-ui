@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Author: panrui
+ * @Date: 2021-05-21 18:02:50
+ * @LastEditTime: 2021-05-24 15:36:33
+ * @LastEditors: panrui
+ * 不忘初心,不负梦想
+ */
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
@@ -9,6 +17,13 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    children: [
+      {
+        path: 'country',
+        name: 'Country',
+        component: () => import(/* webpackChunkName: "about" */ "../views/Country.vue"),
+      }
+    ]
   },
   {
     path: "/about",

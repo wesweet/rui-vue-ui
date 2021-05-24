@@ -1,9 +1,13 @@
+<!--
+ * @Description: 根节点入口
+ * @Author: panrui
+ * @Date: 2021-05-21 18:02:50
+ * @LastEditTime: 2021-05-24 15:07:46
+ * @LastEditors: panrui
+ * 不忘初心,不负梦想
+-->
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view />
   </div>
 </template>
@@ -13,6 +17,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
   text-align: center;
   color: #2c3e50;
 }
