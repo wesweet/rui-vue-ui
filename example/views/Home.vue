@@ -2,47 +2,49 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-05-24 15:30:39
+ * @LastEditTime: 2021-05-25 11:04:09
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
-  <div class="home">
+  <a-layout id="components-layout-demo-side" style="min-height: 100vh">
+    <a-layout-sider v-model="collapsed" collapsible>
+      <div class="logo" />
+      <LeftMenu></LeftMenu>
+    </a-layout-sider>
     <a-layout>
-      <a-layout-header>Header</a-layout-header>
-      <a-layout>
-        <a-layout-sider>
-          <LeftMenu></LeftMenu>
-        </a-layout-sider>
-        <a-layout-content>
-          <router-view></router-view>
-        </a-layout-content>
-      </a-layout>
-      <a-layout-footer>Footer</a-layout-footer>
+      <a-layout-header style="background: #001529; padding: 0;color:#fff" >
+        妙聚组件
+      </a-layout-header>
+      <a-layout-content style="margin: 0 16px">
+        <router-view></router-view>
+      </a-layout-content>
+      <a-layout-footer style="text-align: center">
+        Ant Design ©2018 Created by Ant UED
+      </a-layout-footer>
     </a-layout>
-  </div>
+  </a-layout>
 </template>
 
 <script>
 // @ is an alias to /src
 import LeftMenu from "@/components/LeftMenu.vue";
-
 export default {
   name: "Home",
+  data() {
+    return {
+      collapsed: false,
+    };
+  },
   components: {
     LeftMenu,
   },
 };
 </script>
 <style lang="less" scoped>
-.home {
-  height: 100%;
-  /deep/ .ant-layout {
-    height: 100%;
-    overflow: hidden;
-    .ant-layout-sider {
-      background-color: #fff;
-    }
-  }
+#components-layout-demo-side .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
 }
 </style>

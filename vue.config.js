@@ -2,7 +2,7 @@
  * @Description:
  * @Author: panrui
  * @Date: 2021-05-21 18:04:53
- * @LastEditTime: 2021-05-24 11:44:11
+ * @LastEditTime: 2021-05-25 09:44:05
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -36,6 +36,18 @@ module.exports = {
       .tap((options) => {
         // 修改它的选项...
         return options;
+      });
+    // 添加markdown配置
+    config.module
+      .rule('md')
+      .test(/\.md$/)
+      .use('vue-loader')
+      .loader('vue-loader')
+      .end()
+      .use('vue-markdown-loader')
+      .loader('vue-markdown-loader/lib/markdown-compiler')
+      .options({
+        raw: true
       });
   },
   css: {

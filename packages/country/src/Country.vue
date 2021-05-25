@@ -2,7 +2,7 @@
  * @Description: 多选带搜索保存插件
  * @Author: panrui
  * @Date: 2021-05-21 18:14:45
- * @LastEditTime: 2021-05-24 13:50:05
+ * @LastEditTime: 2021-05-25 10:28:52
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -405,13 +405,13 @@ export default {
       .contbox {
         display: flex;
         .wrapbox {
-          width: 300px;
+          min-width: 300px;
           &.small {
-            width: 220px;
+            min-width: 220px;
             padding: 10px;
           }
           .checkbox {
-            width: 300px;
+            min-width: 300px;
             height: 166px;
             padding: 10px;
             .ant-checkbox-group {
@@ -434,6 +434,8 @@ export default {
               .ant-checkbox-group-item {
                 display: block;
                 text-align: left;
+                white-space: nowrap;
+                word-break: break-all;
               }
             }
           }

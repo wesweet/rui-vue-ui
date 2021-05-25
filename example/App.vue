@@ -2,7 +2,7 @@
  * @Description: 根节点入口
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-05-24 15:07:46
+ * @LastEditTime: 2021-05-25 09:51:01
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -18,7 +18,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  text-align: center;
+  // text-align: center;
   color: #2c3e50;
 }
 

@@ -2,59 +2,30 @@
  * @Description: 左侧导航菜单
  * @Author: panrui
  * @Date: 2021-05-24 14:55:57
- * @LastEditTime: 2021-05-24 15:19:18
+ * @LastEditTime: 2021-05-25 10:59:45
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
-  <div>
-    <a-menu
-      style="width: 200px"
-      :default-selected-keys="['1']"
-      :open-keys.sync="openKeys"
-      mode="inline"
-      @click="handleClick"
-    >
-      <a-sub-menu key="sub1" @titleClick="titleClick">
-        <span slot="title"
-          ><a-icon type="mail" /><span>Components(1)</span></span
-        >
-        <a-menu-item-group key="g1">
-          <!-- <template slot="title">
-            <a-icon type="qq" /><span>Item 1</span>
-          </template> -->
-          <a-menu-item key="1">
-            <router-link to="/country" tag="span">Country</router-link>
-          </a-menu-item>
-          <a-menu-item key="2"> Option 2 </a-menu-item>
-        </a-menu-item-group>
-        <a-menu-item-group key="g2" title="Item 2">
-          <a-menu-item key="3"> Option 3 </a-menu-item>
-          <a-menu-item key="4"> Option 4 </a-menu-item>
-        </a-menu-item-group>
-      </a-sub-menu>
-      <a-sub-menu key="sub2" @titleClick="titleClick">
-        <span slot="title"
-          ><a-icon type="appstore" /><span>Navigation Two</span></span
-        >
-        <a-menu-item key="5"> Option 5 </a-menu-item>
-        <a-menu-item key="6"> Option 6 </a-menu-item>
-        <a-sub-menu key="sub3" title="Submenu">
-          <a-menu-item key="7"> Option 7 </a-menu-item>
-          <a-menu-item key="8"> Option 8 </a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
-      <a-sub-menu key="sub4">
-        <span slot="title"
-          ><a-icon type="setting" /><span>Navigation Three</span></span
-        >
-        <a-menu-item key="9"> Option 9 </a-menu-item>
-        <a-menu-item key="10"> Option 10 </a-menu-item>
-        <a-menu-item key="11"> Option 11 </a-menu-item>
-        <a-menu-item key="12"> Option 12 </a-menu-item>
-      </a-sub-menu>
-    </a-menu>
-  </div>
+  <a-menu theme="dark" :default-selected-keys="['3']" mode="inline">
+    <a-sub-menu key="sub1">
+      <span slot="title"><a-icon type="user" /><span>Components(1)</span></span>
+      <a-menu-item key="3">
+        <router-link to="/country" tag="span">下拉搜索带保存</router-link>
+      </a-menu-item>
+      <a-menu-item key="4"> Bill </a-menu-item>
+      <a-menu-item key="5"> Alex </a-menu-item>
+    </a-sub-menu>
+    <a-sub-menu key="sub2">
+      <span slot="title"><a-icon type="team" /><span>Team</span></span>
+      <a-menu-item key="6"> Team 1 </a-menu-item>
+      <a-menu-item key="8"> Team 2 </a-menu-item>
+    </a-sub-menu>
+    <a-menu-item key="9">
+      <a-icon type="file" />
+      <span>File</span>
+    </a-menu-item>
+  </a-menu>
 </template>
 <script>
 export default {
