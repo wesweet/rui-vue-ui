@@ -2,13 +2,13 @@
  * @Description: Select组件
  * @Author: panrui
  * @Date: 2021-06-03 12:08:47
- * @LastEditTime: 2021-06-03 13:41:32
+ * @LastEditTime: 2021-06-03 13:48:13
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <div class="select-box">
-    <a-card>
+    <a-card title="select组件使用展示" style="width: 500px">
       <mj-select
         :changeSelect="changeSelect"
         :defaultValue="defaultValue"
