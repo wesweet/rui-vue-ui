@@ -2,7 +2,7 @@
  * @Description: 多选带搜索保存插件
  * @Author: panrui
  * @Date: 2021-05-21 18:14:45
- * @LastEditTime: 2021-05-25 10:28:52
+ * @LastEditTime: 2021-06-03 11:52:07
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -150,7 +150,7 @@
 </template>
 <script>
 export default {
-  name: "PrCountry",
+  name: "MjCountry",
   // 组件接收数据
   props: {
     plainOptions: {

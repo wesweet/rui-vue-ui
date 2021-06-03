@@ -1,8 +1,16 @@
+<!--
+ * @Description: country组件使用文档
+ * @Author: panrui
+ * @Date: 2021-05-25 09:45:24
+ * @LastEditTime: 2021-06-03 11:54:29
+ * @LastEditors: panrui
+ * 不忘初心,不负梦想
+-->
 
 ## 使用
 
 ```html
-<pr-country
+<mj-country
   :plainOptions="[
         { name: '中国', value: 1 },
         { name: '日本', value: 2 },
@@ -15,7 +23,7 @@
   :fnDelete="fnDelete"
 >
   <template v-slot> 渠道分包 </template>
-</pr-country>
+</mj-country>
 ```
 
 ## API

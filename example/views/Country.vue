@@ -2,14 +2,14 @@
  * @Description: Country组件
  * @Author: panrui
  * @Date: 2021-05-24 15:22:17
- * @LastEditTime: 2021-05-25 10:33:47
+ * @LastEditTime: 2021-06-03 11:56:15
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <div class="country-box">
     <a-card title="country组件使用展示" style="width: 500px">
-      <pr-country
+      <mj-country
         :plainOptions="[
           { name: '中国', value: 1 },
           { name: '日本', value: 2 },
@@ -22,20 +22,10 @@
         :areaData="areaData"
       >
         <template v-slot> 渠道分包 </template>
-      </pr-country>
+      </mj-country>
     </a-card>
     <a-row type="flex">
       <a-col> </a-col>
-      <!-- <a-col :span="9" :offset="1">
-        <a-row>
-          <a-col>当前确定选择的值为</a-col>
-          <a-col>{{ sureData }}</a-col>
-        </a-row>
-        <a-row>
-          <a-col>当前已保存的区域</a-col>
-          <a-col>{{ areaData }}</a-col>
-        </a-row>
-      </a-col> -->
     </a-row>
     <a-row type="flex">
       <a-col :span="20" class="markdown-body">

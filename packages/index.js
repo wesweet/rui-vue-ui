@@ -2,14 +2,14 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:23:19
- * @LastEditTime: 2021-05-24 11:40:01
+ * @LastEditTime: 2021-06-03 11:53:41
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
-import PrCountry from './country'
+import MjCountry from './country'
 // 所有组件列表
 const components = [
-  PrCountry
+  MjCountry
 ]
 
 // 定义 install 方法，接收 Vue 作为参数

@@ -1,8 +1,8 @@
 <!--
- * @Description: 
+ * @Description: 主页
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-05-25 11:04:09
+ * @LastEditTime: 2021-06-03 11:55:48
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -16,7 +16,7 @@
       <a-layout-header style="background: #001529; padding: 0;color:#fff" >
         妙聚组件
       </a-layout-header>
-      <a-layout-content style="margin: 0 16px">
+      <a-layout-content>
         <router-view></router-view>
       </a-layout-content>
       <a-layout-footer style="text-align: center">

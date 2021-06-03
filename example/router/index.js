@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-05-24 15:36:33
+ * @LastEditTime: 2021-05-26 11:06:16
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -12,16 +12,20 @@ import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
     path: "/",
     name: "Home",
     component: Home,
-    children: [
+    // redirect: '/start',
+    children: [{
+        path: 'start',
+        name: 'Start',
+        component: () => import( /* webpackChunkName: "about" */ "../views/Start.vue"),
+      },
       {
         path: 'country',
         name: 'Country',
-        component: () => import(/* webpackChunkName: "about" */ "../views/Country.vue"),
+        component: () => import( /* webpackChunkName: "about" */ "../views/Country.vue"),
       }
     ]
   },
@@ -32,7 +36,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import( /* webpackChunkName: "about" */ "../views/About.vue"),
   },
 ];
 
