@@ -2,14 +2,14 @@
  * @Description: 省市县联动组件
  * @Author: panrui
  * @Date: 2021-06-03 16:02:13
- * @LastEditTime: 2021-06-03 16:09:39
+ * @LastEditTime: 2021-06-03 17:49:28
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <div class="city-picker-box">
     <a-card title="citypicker组件使用展示" style="width: 500px">
-      <mj-city-picker></mj-city-picker>
+      <mj-city-picker :isArea="true" province="上海市"></mj-city-picker>
     </a-card>
     <a-row type="flex">
       <a-col :span="20" class="markdown-body">
