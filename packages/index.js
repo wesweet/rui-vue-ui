@@ -2,15 +2,16 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:23:19
- * @LastEditTime: 2021-06-03 12:08:22
+ * @LastEditTime: 2021-06-03 14:29:47
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
 import MjCountry from './country'
 import MjSelect from './select'
+import MjSelectYear from './selectyear'
 // 所有组件列表
 const components = [
-  MjCountry, MjSelect
+  MjCountry, MjSelect, MjSelectYear
 ]
 
 // 定义 install 方法，接收 Vue 作为参数

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-06-03 12:19:07
+ * @LastEditTime: 2021-06-03 14:37:19
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -31,6 +31,11 @@ const routes = [{
         path: 'select',
         name: 'Select',
         component: () => import( /* webpackChunkName: "about" */ "../views/Select.vue"),
+      },
+      {
+        path: 'selectYear',
+        name: 'SelectYear',
+        component: () => import( /* webpackChunkName: "about" */ "../views/SelectYear.vue"),
       }
     ]
   },
