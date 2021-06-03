@@ -2,7 +2,7 @@
  * @Description: 左侧导航菜单
  * @Author: panrui
  * @Date: 2021-05-24 14:55:57
- * @LastEditTime: 2021-05-26 11:42:18
+ * @LastEditTime: 2021-06-03 13:39:13
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -19,9 +19,13 @@
     <a-sub-menu key="sub1">
       <span slot="title">
         <!-- <a-icon type="user" /> -->
-        <span>Components(1)</span></span>
+        <span>Components(2)</span></span
+      >
       <a-menu-item key="3">
         <router-link to="/country" tag="span">下拉搜索带保存</router-link>
+      </a-menu-item>
+      <a-menu-item key="4">
+        <router-link to="/select" tag="span">下拉选择搜索组件</router-link>
       </a-menu-item>
     </a-sub-menu>
   </a-menu>

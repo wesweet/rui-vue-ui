@@ -2,7 +2,7 @@
  * @Description: Country组件
  * @Author: panrui
  * @Date: 2021-05-24 15:22:17
- * @LastEditTime: 2021-06-03 11:56:15
+ * @LastEditTime: 2021-06-03 13:40:37
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -25,21 +25,18 @@
       </mj-country>
     </a-card>
     <a-row type="flex">
-      <a-col> </a-col>
-    </a-row>
-    <a-row type="flex">
       <a-col :span="20" class="markdown-body">
-        <country></country>
+        <countryDocs></countryDocs>
       </a-col>
     </a-row>
   </div>
 </template>
 <script>
-import country from "@/mds/country.md";
+import countryDocs from "@/mds/countryDocs.md";
 export default {
   name: "Country",
   components: {
-    country,
+    countryDocs,
   },
   data() {
     return {
@@ -75,7 +72,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .country-box {
   padding-left: 50px;
   padding-top: 20px;
