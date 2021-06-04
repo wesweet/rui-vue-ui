@@ -2,8 +2,8 @@
  * @Description: 左侧导航菜单
  * @Author: panrui
  * @Date: 2021-05-24 14:55:57
- * @LastEditTime: 2021-06-04 17:50:47
- * @LastEditors: hxw
+ * @LastEditTime: 2021-06-04 18:13:01
+ * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
@@ -19,7 +19,7 @@
     <a-sub-menu key="sub1">
       <span slot="title">
         <!-- <a-icon type="user" /> -->
-        <span>Components(6)</span></span
+        <span>Components(7)</span></span
       >
       <a-menu-item key="3">
         <router-link to="/country" tag="span">下拉搜索带保存</router-link>
@@ -38,6 +38,9 @@
       </a-menu-item>
       <a-menu-item key="8">
         <router-link to="/dateSelect" tag="span">时间范围选择器</router-link>
+      </a-menu-item>
+      <a-menu-item key="9">
+        <router-link to="/upload" tag="span">图片上传</router-link>
       </a-menu-item>
     </a-sub-menu>
   </a-menu>

@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-06-04 17:38:53
- * @LastEditors: hxw
+ * @LastEditTime: 2021-06-04 18:10:15
+ * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
 import Vue from "vue";
@@ -51,6 +51,11 @@ const routes = [{
         path: 'dateSelect',
         name: 'DateSelect',
         component: () => import( /* webpackChunkName: "about" */ "../views/DateSelect.vue"),
+      },
+      {
+        path: 'upload',
+        name: 'Upload',
+        component: () => import( /* webpackChunkName: "about" */ "../views/Upload.vue"),
       }
     ]
   },
