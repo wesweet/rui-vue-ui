@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-06-03 16:07:41
+ * @LastEditTime: 2021-06-04 15:29:33
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -41,6 +41,11 @@ const routes = [{
         path: 'cityPicker',
         name: 'CityPicker',
         component: () => import( /* webpackChunkName: "about" */ "../views/CityPicker.vue"),
+      },
+      {
+        path: 'wangeditor',
+        name: 'Wangeditor',
+        component: () => import( /* webpackChunkName: "about" */ "../views/Wangeditor.vue"),
       }
     ]
   },
