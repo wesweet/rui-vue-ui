@@ -2,8 +2,8 @@
  * @Description: 左侧导航菜单
  * @Author: panrui
  * @Date: 2021-05-24 14:55:57
- * @LastEditTime: 2021-06-04 16:10:42
- * @LastEditors: panrui
+ * @LastEditTime: 2021-06-04 17:50:47
+ * @LastEditors: hxw
  * 不忘初心,不负梦想
 -->
 <template>
@@ -35,6 +35,9 @@
       </a-menu-item>
       <a-menu-item key="7">
         <router-link to="/wangeditor" tag="span">富文本编辑器</router-link>
+      </a-menu-item>
+      <a-menu-item key="8">
+        <router-link to="/dateSelect" tag="span">时间范围选择器</router-link>
       </a-menu-item>
     </a-sub-menu>
   </a-menu>
