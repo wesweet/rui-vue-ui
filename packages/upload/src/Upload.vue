@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:15:00
- * @LastEditTime: 2021-06-07 10:12:04
+ * @LastEditTime: 2021-06-07 11:54:32
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -13,10 +13,11 @@
       list-type="picture-card"
       :file-list="fileList"
       :beforeUpload="handBeforeUpload"
+      :remove="handRemove"
       @preview="handlePreview"
       @change="handleChange"
     >
-      <div v-if="fileList.length < 8">
+      <div v-if="fileList.length < maxNumber">
         <a-icon type="plus" />
         <div class="ant-upload-text">Upload</div>
       </div>
@@ -60,6 +61,12 @@ export default {
         return [];
       },
     },
+    filetype: {
+      type: Array,
+      default() {
+        return ["image/png", "image/jpeg", "image/jpg"];
+      },
+    },
     fnCallback: {
       type: Function,
       default: function () {},
@@ -69,48 +76,51 @@ export default {
     return {
       previewVisible: false,
       previewImage: "",
-      // fileList: [
-      //   {
-      //     uid: "-1",
-      //     name: "image.png",
-      //     status: "done",
-      //     url:
-      //       "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-      //   },
-      //   {
-      //     uid: "-2",
-      //     name: "image.png",
-      //     status: "done",
-      //     url:
-      //       "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-      //   },
-      //   {
-      //     uid: "-3",
-      //     name: "image.png",
-      //     status: "done",
-      //     url:
-      //       "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-      //   },
-      //   {
-      //     uid: "-4",
-      //     name: "image.png",
-      //     status: "done",
-      //     url:
-      //       "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-      //   },
-      //   {
-      //     uid: "-5",
-      //     name: "image.png",
-      //     status: "error",
-      //   },
-      // ],
+      fileList: [],
     };
   },
+  created() {
+    this.fileList = [].concat(this.list);
+  },
   methods: {
-    // 文件上传
-    handBeforeUpload(file, fileList) {
-      console.log("上传检测", file, fileList);
-      return false
+    // 阻止文件自动上传
+    handBeforeUpload() {
+      return false;
+    },
+    // 限制文件上传格式及大小
+    uploadLt(file) {
+      if (file.thumbUrl) {
+        return true
+      }
+      let isJpgOrPng = this.filetype.indexOf(file.type);
+      if (isJpgOrPng == -1) {
+        this.$message.error("文件上传格式不合法!");
+        return false;
+      } else {
+        isJpgOrPng = true;
+      }
+      const isLt2M = file.size / 1024 <= this.maxSize;
+      if (!isLt2M) {
+        this.$message.error(`文件大小限制为${this.maxSize}kb`);
+        return false;
+      }
+      return isJpgOrPng && isLt2M;
+    },
+    // 文件发生改变
+    handleChange({ fileList }) {
+      // console.log(fileList, '文件变更')
+      if (
+        fileList.every((item) => {
+          return this.uploadLt(item);
+        })
+      ) {
+        this.fileList = fileList;
+        this.fnCallback([].concat(this.fileList));
+      }
+    },
+    // 文件删除时回调
+    handRemove() {
+      // console.log(file, '删除文件')
     },
     handleCancel() {
       this.previewVisible = false;
@@ -121,9 +131,6 @@ export default {
       }
       this.previewImage = file.url || file.preview;
       this.previewVisible = true;
-    },
-    handleChange({ fileList }) {
-      this.fileList = fileList;
     },
   },
 };

@@ -2,14 +2,14 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:08:53
- * @LastEditTime: 2021-06-04 18:18:43
+ * @LastEditTime: 2021-06-07 11:58:01
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <div class="upload-box">
     <a-card title="upload组件使用展示" style="width: 500px">
-      <mj-upload></mj-upload>
+      <mj-upload :list="fileList" :fnCallback="fnCallback"></mj-upload>
     </a-card>
     <a-row type="flex">
       <a-col :span="20" class="markdown-body">
@@ -26,9 +26,49 @@ export default {
     uploadDocs,
   },
   data() {
-    return {};
+    return {
+      fileList: [
+        {
+          uid: "-1",
+          name: "image.png",
+          // status: "done",
+          thumbUrl:
+            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        },
+        {
+          uid: "-2",
+          name: "image.png",
+          // status: "done",
+          thumbUrl:
+            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        },
+        {
+          uid: "-3",
+          name: "image.png",
+          // status: "done",
+          thumbUrl:
+            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        },
+        {
+          uid: "-4",
+          name: "image.png",
+          // status: "done",
+          thumbUrl:
+            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        },
+        // {
+        //   uid: "-5",
+        //   name: "image.png",
+        //   status: "error",
+        // },
+      ],
+    };
   },
-  methods: {},
+  methods: {
+    fnCallback(option) {
+      console.log(option)
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>
