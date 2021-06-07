@@ -56,6 +56,11 @@ const routes = [{
         path: "upload",
         name: "Upload",
         component: () => import( /* webpackChunkName: "about" */ "../views/Upload.vue"),
+      },
+      {
+        path: "selectcol",
+        name: "SelectCol",
+        component: () => import( /* webpackChunkName: "about" */ "../views/SelectCol.vue"),
       }
     ]
   },

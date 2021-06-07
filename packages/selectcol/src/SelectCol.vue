@@ -1,22 +1,15 @@
 <!--
- * @Description: 多选带搜索保存插件
+ * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
- * @Date: 2021-05-21 18:14:45
- * @LastEditTime: 2021-06-07 15:34:48
+ * @Date: 2021-06-07 14:44:14
+ * @LastEditTime: 2021-06-07 17:21:53
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
-  <div ref="country" class="channelbox">
+  <div ref="selectcol" class="channelbox">
     <a-button @click="handCard">
-      <template v-if="checkNumber > 0">
-        <!-- {{ $t('others.hasChoice') }} -->
-        已选
-        {{ checkNumber }}
-      </template>
-      <template v-else>
-        <slot></slot>
-      </template>
+      测试
       <a-icon type="down"></a-icon>
     </a-button>
     <a-card
@@ -25,24 +18,20 @@
       class="cardbox"
       :style="styleObject"
     >
-      <!-- 顶部搜索 -->
-      <div class="cardbox-search">
-        <!-- <a-input-search :placeholder="this.$t('others.searchPlaceHolder')" v-model="searchinput" @change="onSearch" /> -->
-        <a-input-search
-          placeholder="请输入关键字"
-          v-model="searchinput"
-          @change="onSearch"
-        />
-      </div>
-      <!-- /顶部搜索 -->
       <div class="contbox">
         <!-- leftbox -->
         <div class="wrapbox" style="border-right: 1px solid #eee">
           <!-- 列表 -->
-          <div class="checkbox">
+          <div class="checkbox"></div>
+          <!-- /列表 -->
+        </div>
+        <!-- /leftbox -->
+        <!-- rightbox -->
+        <div class="wrapbox">
+          <div class="listbox" style="border-right: 1px solid #eee">
             <a-checkbox-group
               v-model="checkedList"
-              :options="showPlainOptions"
+              :options="plainOptions"
               @change="onChange"
             >
               <template slot="label" slot-scope="option">
@@ -50,98 +39,32 @@
               </template>
             </a-checkbox-group>
           </div>
-          <!-- /列表 -->
-          <!-- 保存为 -->
-          <div class="inputbox" v-if="isSave">
-            <a-row type="flex" align="middle">
-              <a-col :span="8">
-                <!-- <a-checkbox @change="handBaseCheck" v-model="checked">{{ $t('others.saveAs') }}</a-checkbox> -->
-                <a-checkbox @change="handBaseCheck" v-model="checked"
-                  >保存为</a-checkbox
-                >
-              </a-col>
-              <a-col :span="14">
-                <!-- <a-input :placeholder="this.$t('others.areaPlaceHolder')" :disabled="!checked" v-model="value" /> -->
-                <a-input
-                  placeholder="输入地区名称"
-                  :disabled="!checked"
-                  v-model="value"
-                />
-              </a-col>
-            </a-row>
-          </div>
-          <!-- /保存为 -->
-          <div class="btnbox">
-            <a-row type="flex" justify="center">
-              <a-col :span="5">
-                <!-- <a-button type="primary" @click="handSave"> {{ $t('others.sure') }} </a-button> -->
-                <a-button type="primary" @click="handSave"> 确认 </a-button>
-              </a-col>
-              <a-col :span="2"> </a-col>
-              <a-col :span="5">
-                <!-- <a-button type="primary" @click.self="handCard"> {{ $t('others.cancel') }} </a-button> -->
-                <a-button type="primary" @click.self="handCard">
-                  取消
-                </a-button>
-              </a-col>
-            </a-row>
-          </div>
-        </div>
-        <!-- /leftbox -->
-        <div
-          class="wrapbox small"
-          v-show="previewList.length"
-          style="border-right: 1px solid #eee"
-        >
-          <a-row type="flex" justify="space-between" align="middle">
-            <a-col>已选择</a-col>
-            <a-col @click.stop="handDeletePre(-1)">清除</a-col>
+          <a-divider style="margin: 0" />
+          <a-row type="flex" justify="space-around" style="padding: 15px 0">
+            <a-col>
+              <a-button type="primary"> 确认 </a-button>
+            </a-col>
+            <a-col>
+              <a-button type="primary"> 重置 </a-button>
+            </a-col>
+            <a-col>
+              <a-button type="primary"> 关闭 </a-button>
+            </a-col>
           </a-row>
-          <a-divider style="margin: 5px 0" />
-          <div class="listbox">
-            <a-row
-              type="flex"
-              v-for="(item, index) in previewList"
-              justify="space-between"
-              align="middle"
-              :key="index"
-              style="margin-bottom: 5px"
-            >
-              <a-col class="ellipsis" :title="item.name">
-                {{ item.name }}
-              </a-col>
-              <a-col>
-                <a-icon @click.stop="handDeletePre(index)" type="close" />
-              </a-col>
-            </a-row>
-          </div>
         </div>
-        <!-- rightbox -->
-        <div class="wrapbox small" v-show="showAreaData.length && isSave">
-          <a-row type="flex" justify="space-between" align="middle">
-            <a-col>已保存</a-col>
-          </a-row>
-          <a-divider style="margin: 5px 0" />
+        <div class="wrapbox">
           <div class="listbox">
-            <a-row
-              type="flex"
-              v-for="(item, index) in showAreaData"
-              :key="index"
-              justify="space-between"
-              align="middle"
-            >
-              <a-col
-                class="ellipsis"
-                @click="handAreaTitle(index)"
-                :title="item.title"
-              >
-                {{ item.title }}
-              </a-col>
-              <a-col>
-                <a-icon @click.stop="handDelete(index)" type="close" />
-              </a-col>
-            </a-row>
+            <div style="padding:10px">已选择3栏</div>
+            <div style="height:333px;background-color:red">
+
+            </div>
           </div>
+          <a-divider style="margin: 0" />
+          <a-row type="flex" style="padding: 15px 0">
+            <a-col>
+              <a-input placeholder="Basic usage" />
+            </a-col>
+          </a-row>
         </div>
         <!-- /rightbox -->
       </div>
@@ -150,7 +73,7 @@
 </template>
 <script>
 export default {
-  name: "MjCountry",
+  name: "MjSelectCol",
   // 组件接收数据
   props: {
     plainOptions: {
@@ -196,7 +119,6 @@ export default {
       checkAll: false,
       showPlainOptions: [], // 传递过来的数据
       showAreaData: [], // 已保存过的数据
-      searchinput: null, // 搜索框输入的值
       data: [], // 保存的地区
       value: null, // 保存列表名称
       checked: false, // 保存勾选状态
@@ -204,7 +126,9 @@ export default {
     };
   },
   // 实例化初始化完成
-  created() {},
+  created() {
+    console.log(this.plainOptions);
+  },
   // 组件挂在阶段
   mounted() {
     // 点击其他区域关闭弹窗显示
@@ -216,24 +140,21 @@ export default {
     document.removeEventListener("click", this.click, false);
   },
   methods: {
+    // 给document绑定点击事件
+    click(e) {
+      const _this = this;
+      if (_this.$refs.selectcol && _this.$refs.selectcol.contains(e.target)) {
+        return;
+      }
+      _this.cardFlag = false
+      // _this.checkedList = [];
+      // _this.cardFlag = _this.indeterminate = _this.checkAll = _this.checked = false;
+    },
     // 点击区域名称回调
     handAreaTitle(index) {
       // 设置勾选
       this.checkedList = [].concat(this.areaData[index].list);
       this.onChange(this.checkedList);
-    },
-    // 给document绑定点击事件
-    click(e) {
-      const _this = this;
-      if (_this.$refs.country && _this.$refs.country.contains(e.target)) {
-        return;
-      }
-      _this.checkedList = [];
-      _this.cardFlag =
-        _this.indeterminate =
-        _this.checkAll =
-        _this.checked =
-          false;
     },
     // 弹窗显示隐藏控制
     handCard() {
@@ -241,7 +162,7 @@ export default {
         // 检测组件距离浏览器左侧位置
         this.initFlag = !this.initFlag;
         document.body.clientWidth -
-          this.$refs.country.getBoundingClientRect().left >
+          this.$refs.selectcol.getBoundingClientRect().left >
         (this.isSave ? 600 : 300)
           ? (this.styleObject = {
               left: 0,
@@ -256,8 +177,6 @@ export default {
         this.checkedList = [].concat(this.saveCheckedList); // 还原上一次选中的值
         this.onChange(this.checkedList);
       }
-      this.searchinput = "";
-      this.onSearch();
     },
     // 删除
     handDelete(index) {
@@ -303,16 +222,6 @@ export default {
     // 地区保存为chexkbox
     handBaseCheck(e) {
       this.checked = e.target.checked;
-    },
-    // 快捷搜索
-    onSearch() {
-      if (this.searchinput) {
-        this.showPlainOptions = this.showPlainOptions.filter((o) => {
-          return o.name.includes(this.searchinput);
-        });
-      } else {
-        this.showPlainOptions = [].concat(this.plainOptions);
-      }
     },
     // 地区勾选
     onChange(checkedList) {
@@ -365,12 +274,12 @@ export default {
    * 监听当前日期默认日期改变触发
    */
   watch: {
-    plainOptions: {
-      immediate: true,
-      handler(n) {
-        this.showPlainOptions = [].concat(n);
-      },
-    },
+    // plainOptions: {
+    //   immediate: true,
+    //   handler(n) {
+    //     this.showPlainOptions = [].concat(n);
+    //   },
+    // },
     areaData: {
       immediate: true,
       handler(n) {
@@ -405,14 +314,13 @@ export default {
       .contbox {
         display: flex;
         .wrapbox {
-          min-width: 300px;
+          min-width: 250px;
           &.small {
-            min-width: 220px;
+            // min-width: 220px;
             padding: 10px;
           }
           .checkbox {
-            min-width: 300px;
-            height: 166px;
+            min-width: 250px;
             padding: 10px;
             .ant-checkbox-group {
               height: 100%;
@@ -446,8 +354,8 @@ export default {
             padding: 10px;
           }
           .listbox {
-            height: 240px;
-            // margin: 10px;
+            height: 400px;
+            width: 250px;
             box-sizing: border-box;
             overflow-y: auto;
             &::-webkit-scrollbar {
@@ -463,16 +371,24 @@ export default {
               border-radius: 5px;
               background-color: #eeeeee;
             }
+            .ant-checkbox-group {
+              display: flex;
+              flex-direction: column;
+              padding: 10px;
+              .ant-checkbox-group-item {
+                margin-bottom: 12px;
+              }
+            }
             .ant-row-flex {
               margin-bottom: 10px;
             }
             .ellipsis {
-              width: 160px;
-              text-align: left;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              word-break: break-all;
-              overflow: hidden;
+              // width: 160px;
+              // text-align: left;
+              // text-overflow: ellipsis;
+              // white-space: nowrap;
+              // word-break: break-all;
+              // overflow: hidden;
             }
           }
         }
