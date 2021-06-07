@@ -39,24 +39,24 @@ module.exports = {
       });
     // 添加markdown配置
     config.module
-      .rule('md')
+      .rule("md")
       .test(/\.md$/)
-      .use('vue-loader')
-      .loader('vue-loader')
+      .use("vue-loader")
+      .loader("vue-loader")
       .end()
-      .use('vue-markdown-loader')
-      .loader('vue-markdown-loader/lib/markdown-compiler')
+      .use("vue-markdown-loader")
+      .loader("vue-markdown-loader/lib/markdown-compiler")
       .options({
-        raw: true
+        raw: true,
       });
   },
   css: {
     loaderOptions: {
       less: {
         modifyVars: {
-          'primary-color': '#e94c4b',
-          'link-color': '#e94c4b',
-          'border-radius-base': '2px'
+          "primary-color": "#e94c4b",
+          "link-color": "#e94c4b",
+          "border-radius-base": "2px",
         },
         javascriptEnabled: true,
       },
