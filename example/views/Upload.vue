@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:08:53
- * @LastEditTime: 2021-06-07 18:16:15
+ * @LastEditTime: 2021-06-08 09:42:11
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -19,14 +19,11 @@
   </div>
 </template>
 <script>
-// import { MjUpload } from "../../packages";
-// console.log(MjUpload);
 import uploadDocs from "@/mds/uploadDocs.md";
 export default {
   name: "Upload",
   components: {
     uploadDocs,
-    // MjUpload,
   },
   data() {
     return {
