@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-07 17:21:53
+ * @LastEditTime: 2021-06-08 14:53:00
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -21,9 +21,35 @@
       <div class="contbox">
         <!-- leftbox -->
         <div class="wrapbox" style="border-right: 1px solid #eee">
-          <!-- 列表 -->
-          <div class="checkbox"></div>
-          <!-- /列表 -->
+          <div class="listbox">
+            <a-radio-group v-model="radioValue" @change="handRadioChange">
+              <a-row
+                type="flex"
+                justify="space-between"
+                align="middle"
+                v-for="(item, index) in showColData"
+                :key="index"
+              >
+                <a-col :span="18">
+                  <a-radio
+                    :value="item.value"
+                    class="ellipsis"
+                    :title="item.name"
+                  >
+                    {{ item.name }}
+                  </a-radio>
+                </a-col>
+                <a-col :span="4">
+                  <a-icon
+                    @click="handDelete(item)"
+                    style="margin-right: 10px"
+                    type="delete"
+                  />
+                  <a-icon @click="handEdit(item)" type="edit" />
+                </a-col>
+              </a-row>
+            </a-radio-group>
+          </div>
         </div>
         <!-- /leftbox -->
         <!-- rightbox -->
@@ -32,7 +58,7 @@
             <a-checkbox-group
               v-model="checkedList"
               :options="plainOptions"
-              @change="onChange"
+              @change="handCheckboxChange"
             >
               <template slot="label" slot-scope="option">
                 {{ option.name }}
@@ -54,9 +80,15 @@
         </div>
         <div class="wrapbox">
           <div class="listbox">
-            <div style="padding:10px">已选择3栏</div>
-            <div style="height:333px;background-color:red">
-
+            <div style="padding: 10px">已选择3栏</div>
+            <div style="height: 333px;">
+              <draggable v-model="plainOptions">
+                <transition-group>
+                  <div v-for="element in plainOptions" :key="element.value">
+                    {{ element.name }}
+                  </div>
+                </transition-group>
+              </draggable>
             </div>
           </div>
           <a-divider style="margin: 0" />
@@ -72,16 +104,28 @@
   </div>
 </template>
 <script>
+import draggable from "vuedraggable";
 export default {
   name: "MjSelectCol",
+  components: {
+    draggable,
+  },
   // 组件接收数据
   props: {
+    // 表格列数据
     plainOptions: {
       type: Array,
       default() {
         return [];
       },
       required: true,
+    },
+    // 已保存的表格列
+    colData: {
+      type: Array,
+      default() {
+        return [];
+      },
     },
     // 已保存的区域
     areaData: {
@@ -113,6 +157,7 @@ export default {
       checkNumber: 0, // 当前查询的数量
       styleObject: {}, // 弹窗位置样式
       cardFlag: false, // 卡片默认不展示
+      radioValue: 1,
       checkedList: [], // 默认设置需要选中的值
       saveCheckedList: [], // 最近一次选中的值
       indeterminate: false, // 全选不存在默认选中时设置false 否则设置true
@@ -127,7 +172,7 @@ export default {
   },
   // 实例化初始化完成
   created() {
-    console.log(this.plainOptions);
+    console.log(456);
   },
   // 组件挂在阶段
   mounted() {
@@ -146,15 +191,18 @@ export default {
       if (_this.$refs.selectcol && _this.$refs.selectcol.contains(e.target)) {
         return;
       }
-      _this.cardFlag = false
+      _this.cardFlag = false;
       // _this.checkedList = [];
       // _this.cardFlag = _this.indeterminate = _this.checkAll = _this.checked = false;
     },
-    // 点击区域名称回调
-    handAreaTitle(index) {
-      // 设置勾选
-      this.checkedList = [].concat(this.areaData[index].list);
-      this.onChange(this.checkedList);
+    handRadioChange(e) {
+      console.log("radio checked", e.target.value);
+    },
+    handDelete(item) {
+      console.log(item);
+    },
+    handEdit(item) {
+      console.log(item);
     },
     // 弹窗显示隐藏控制
     handCard() {
@@ -175,115 +223,27 @@ export default {
       if (this.cardFlag && this.saveCheckedList.length) {
         // 弹窗打开条件
         this.checkedList = [].concat(this.saveCheckedList); // 还原上一次选中的值
-        this.onChange(this.checkedList);
+        this.handCheckboxChange(this.checkedList);
       }
     },
-    // 删除
-    handDelete(index) {
-      // 调用父组件方法 更新areaData 数据
-      this.fnDelete({
-        id: this.areaData[index].id,
-        index,
-      });
-    },
-    // 保存
-    handSave() {
-      if (this.checked) {
-        // 勾选状态下
-        if (!this.value) {
-          this.$message.info("请输入地区名称");
-          return;
-        }
-        if (!this.checkedList.length) {
-          this.$message.info("请勾选地区名称");
-          return;
-        }
-        if (
-          this.areaData.some((item) => {
-            return item.title === this.value;
-          })
-        ) {
-          this.$message.info("地区名称不能重复");
-          return;
-        }
-        this.fnSave({
-          title: this.value,
-          list: this.checkedList,
-        });
-        this.checked = false;
-        this.value = "";
-      } else {
-        this.fnSureClick(this.checkedList); // 返回选中的数组
-        this.saveCheckedList = [].concat(this.checkedList); // 临时存储最近一次选中的值
-      }
-      this.checkNumber = this.checkedList.length;
-      this.handCard();
-    },
-    // 地区保存为chexkbox
-    handBaseCheck(e) {
-      this.checked = e.target.checked;
-    },
-    // 地区勾选
-    onChange(checkedList) {
-      this.indeterminate =
-        !!checkedList.length && checkedList.length < this.plainOptions.length;
-      this.checkAll = checkedList.length === this.plainOptions.length;
-      // 先删除
-      const _previewList = this.previewList.filter((item) => {
-        return this.showPlainOptions.every((m) => {
-          return m.value !== item.value;
-        });
-      });
-      const list = this.showPlainOptions.filter((item) => {
-        return checkedList.indexOf(item.value) > -1;
-      });
-      this.previewList = [].concat(this.unique(_previewList.concat(list)));
-      this.checkedList = this.previewList.map((item) => {
-        return item.value;
-      });
-    },
-    // 数组去重
-    unique(arr) {
-      const res = new Map();
-      return arr.filter((a) => !res.has(a) && res.set(a, 1));
-    },
-    // 删除预览
-    handDeletePre(index) {
-      if (index > -1) {
-        this.checkedList.splice(index, 1);
-        this.previewList.splice(index, 1);
-      } else {
-        this.checkedList = [];
-        this.previewList = [];
-      }
-    },
-    // 全选
-    onCheckAllChange(e) {
-      const _this = this;
-      Object.assign(this, {
-        checkedList: e.target.checked
-          ? _this.plainOptions.map((item) => {
-              return item.value;
-            })
-          : [],
-        indeterminate: false,
-      });
-    },
+    handCheckboxChange() {
+      
+    }
   },
   /**
    * 监听当前日期默认日期改变触发
    */
   watch: {
-    // plainOptions: {
-    //   immediate: true,
-    //   handler(n) {
-    //     this.showPlainOptions = [].concat(n);
-    //   },
-    // },
-    areaData: {
+    colData: {
       immediate: true,
       handler(n) {
-        this.showAreaData = [].concat(n);
+        this.showColData = [
+          {
+            name: "默认",
+            value: -1,
+            list: this.plainOptions,
+          },
+        ].concat(n);
       },
     },
   },
@@ -379,16 +339,21 @@ export default {
                 margin-bottom: 12px;
               }
             }
+            .ant-radio-group {
+              display: flex;
+              flex-direction: column;
+              padding: 10px;
+            }
             .ant-row-flex {
               margin-bottom: 10px;
             }
             .ellipsis {
-              // width: 160px;
-              // text-align: left;
-              // text-overflow: ellipsis;
-              // white-space: nowrap;
-              // word-break: break-all;
-              // overflow: hidden;
+              display: block;
+              width: 100%;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              word-break: break-all;
+              overflow: hidden;
             }
           }
         }

@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件
  * @Author: panrui
  * @Date: 2021-06-07 14:43:36
- * @LastEditTime: 2021-06-07 14:50:05
+ * @LastEditTime: 2021-06-08 14:49:08
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */

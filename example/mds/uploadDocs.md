@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:10:36
- * @LastEditTime: 2021-06-08 09:43:12
+ * @LastEditTime: 2021-06-08 09:56:35
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -12,21 +12,6 @@
 ```html
 <mj-upload :list="fileList" :fnCallback="fnCallback"></mj-upload>
 ```
-
-```js
-  fileList: [
-    {
-      uid: "-1",
-      name: "image.png",
-      thumbUrl:
-        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    },
-  ],
-  fnCallback(option) {
-    console.log(option);
-  },
-```
-
 ## API
 
 | 参数       | 说明             | 类型     | 默认值                                 | 必填  | 返回值              | 备注                               |
