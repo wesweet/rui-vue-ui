@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-06-07 10:44:59
+ * @LastEditTime: 2021-06-09 16:12:14
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -20,47 +20,52 @@ const routes = [{
     children: [{
         path: "start",
         name: "Start",
-        component: () => import( /* webpackChunkName: "about" */ "../views/Start.vue"),
+        component: () => import("../views/Start.vue"),
+      },
+      {
+        path: "changelog",
+        name: "ChangeLog",
+        component: () => import("../views/ChangeLog.vue")
       },
       {
         path: "country",
         name: "Country",
-        component: () => import( /* webpackChunkName: "about" */ "../views/Country.vue"),
+        component: () => import("../views/Country.vue"),
       },
       {
         path: "select",
         name: "Select",
-        component: () => import( /* webpackChunkName: "about" */ "../views/Select.vue"),
+        component: () => import("../views/Select.vue"),
       },
       {
         path: "selectYear",
         name: "SelectYear",
-        component: () => import( /* webpackChunkName: "about" */ "../views/SelectYear.vue"),
+        component: () => import("../views/SelectYear.vue"),
       },
       {
         path: "cityPicker",
         name: "CityPicker",
-        component: () => import( /* webpackChunkName: "about" */ "../views/CityPicker.vue"),
+        component: () => import("../views/CityPicker.vue"),
       },
       {
         path: "wangeditor",
         name: "Wangeditor",
-        component: () => import( /* webpackChunkName: "about" */ "../views/Wangeditor.vue"),
+        component: () => import("../views/Wangeditor.vue"),
       },
       {
         path: "dateSelect",
         name: "DateSelect",
-        component: () => import( /* webpackChunkName: "about" */ "../views/DateSelect.vue"),
+        component: () => import("../views/DateSelect.vue"),
       },
       {
         path: "upload",
         name: "Upload",
-        component: () => import( /* webpackChunkName: "about" */ "../views/Upload.vue"),
+        component: () => import("../views/Upload.vue"),
       },
       {
         path: "selectcol",
         name: "SelectCol",
-        component: () => import( /* webpackChunkName: "about" */ "../views/SelectCol.vue"),
+        component: () => import("../views/SelectCol.vue"),
       }
     ]
   },
@@ -71,7 +76,7 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../views/About.vue"),
+      import("../views/About.vue"),
   },
 ];
 

@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:08:53
- * @LastEditTime: 2021-06-08 14:48:14
+ * @LastEditTime: 2021-06-09 16:20:16
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -10,6 +10,7 @@
   <div class="upload-box">
     <a-card title="upload组件使用展示" style="width: 500px">
       <mj-upload :list="fileList" :fnCallback="fnCallback"></mj-upload>
+      <a-button @click="handClick">编辑</a-button>
     </a-card>
     <a-row type="flex">
       <a-col :span="20" class="markdown-body">
@@ -28,34 +29,13 @@ export default {
   data() {
     return {
       fileList: [
-        {
-          uid: "-1",
-          name: "image.png",
-          // status: "done",
-          thumbUrl:
-            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-        },
-        {
-          uid: "-2",
-          name: "image.png",
-          // status: "done",
-          thumbUrl:
-            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-        },
-        {
-          uid: "-3",
-          name: "image.png",
-          // status: "done",
-          thumbUrl:
-            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-        },
-        {
-          uid: "-4",
-          name: "image.png",
-          // status: "done",
-          thumbUrl:
-            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-        },
+        // {
+        //   uid: "-1",
+        //   name: "image.png",
+        //   // status: "done",
+        //   thumbUrl:
+        //     "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        // },
         // {
         //   uid: "-5",
         //   name: "image.png",
@@ -67,6 +47,17 @@ export default {
   methods: {
     fnCallback(option) {
       console.log(option);
+    },
+    handClick() {
+      this.fileList = [
+        {
+          uid: "-1",
+          name: "image.png",
+          // status: "done",
+          thumbUrl:
+            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+        },
+      ];
     },
   },
 };

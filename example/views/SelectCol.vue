@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件
  * @Author: panrui
  * @Date: 2021-06-07 14:51:40
- * @LastEditTime: 2021-06-09 10:38:52
+ * @LastEditTime: 2021-06-09 16:40:50
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -84,7 +84,18 @@ export default {
   methods: {
     // 确认按钮回调
     fnSureClick(option) {
-      this.colData = this.colData.concat(option);
+      if (option.value) {
+        const index = this.colData.findIndex((item) => {
+          return item.value == option.value;
+        });
+        let list = [].concat(this.colData);
+        list[index] = option;
+        this.colData = [].concat(list);
+        // this.colData[index] = option;
+      } else {
+        option.value = Date.parse(new Date());
+        this.colData = this.colData.concat(option);
+      }
     },
     // 确认删除回调
     fnDelete(option) {

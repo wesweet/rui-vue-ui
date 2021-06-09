@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-09 14:21:18
+ * @LastEditTime: 2021-06-09 16:39:42
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -187,6 +187,7 @@ export default {
       rightboxFlag: false, // 右侧展开状态
       inputboxFlag: false, // 输入框展开状态
       inputValue: "", // 输入框值
+      editValue: "", // 编辑值
     };
   },
   // 实例化初始化完成
@@ -233,6 +234,7 @@ export default {
     },
     // 编辑功能
     handEdit(item) {
+      this.editValue = item.value;
       this.radioValue = item.value;
       this.inputValue = item.name;
       this.checkedList = [].concat(item.list);
@@ -302,7 +304,7 @@ export default {
         list: this.draggableList.map((item) => {
           return item.value;
         }),
-        value: Date.parse(new Date()),
+        value: this.editValue ? this.editValue : '',
       });
       this.handAdd(2);
     },

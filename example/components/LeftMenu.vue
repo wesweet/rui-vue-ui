@@ -2,7 +2,7 @@
  * @Description: 左侧导航菜单
  * @Author: panrui
  * @Date: 2021-05-24 14:55:57
- * @LastEditTime: 2021-06-08 14:46:30
+ * @LastEditTime: 2021-06-09 16:10:08
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -16,33 +16,38 @@
       <!-- <a-icon type="home" /> -->
       <router-link to="/start" tag="span">快速上手</router-link>
     </a-menu-item>
-    <a-sub-menu key="sub1">
+    <a-menu-item key="3">
+      <!-- <a-icon type="home" /> -->
+      <router-link to="/changelog" tag="span">更新日志</router-link>
+    </a-menu-item>
+    
+    <a-sub-menu key="4">
       <span slot="title">
         <!-- <a-icon type="user" /> -->
         <span>Components(8)</span></span
       >
-      <a-menu-item key="3">
+      <a-menu-item key="4_1">
         <router-link to="/country" tag="span">下拉搜索带保存</router-link>
       </a-menu-item>
-      <a-menu-item key="4">
+      <a-menu-item key="4_2">
         <router-link to="/select" tag="span">下拉带搜索</router-link>
       </a-menu-item>
-      <a-menu-item key="5">
+      <a-menu-item key="4_3">
         <router-link to="/selectYear" tag="span">年度选择</router-link>
       </a-menu-item>
-      <a-menu-item key="6">
+      <a-menu-item key="4_4">
         <router-link to="/cityPicker" tag="span">省市县联动</router-link>
       </a-menu-item>
-      <a-menu-item key="7">
+      <a-menu-item key="4_5">
         <router-link to="/wangeditor" tag="span">富文本编辑器</router-link>
       </a-menu-item>
-      <a-menu-item key="8">
+      <a-menu-item key="4_6">
         <router-link to="/dateSelect" tag="span">时间范围选择器</router-link>
       </a-menu-item>
-      <a-menu-item key="9">
+      <a-menu-item key="4_7">
         <router-link to="/upload" tag="span">图片上传</router-link>
       </a-menu-item>
-      <a-menu-item key="10">
+      <a-menu-item key="4_8">
         <router-link to="/selectcol" tag="span">表格指定列展示</router-link>
       </a-menu-item>
     </a-sub-menu>

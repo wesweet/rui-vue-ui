@@ -1,0 +1,15 @@
+<!--
+ * @Description: 更新日志文档
+ * @Author: panrui
+ * @Date: 2021-06-09 16:13:12
+ * @LastEditTime: 2021-06-09 16:42:10
+ * @LastEditors: panrui
+ * 不忘初心,不负梦想
+-->
+
+## 更新日志
+
+### 0.1.9
+
+- 修复上传组件(upload)list 参数动态接收不显示 bug
+- 修复表格合并指定列(selectcol) 无法编辑 bug

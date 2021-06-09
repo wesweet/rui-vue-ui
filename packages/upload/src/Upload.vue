@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:15:00
- * @LastEditTime: 2021-06-07 11:54:32
+ * @LastEditTime: 2021-06-09 16:22:28
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -80,7 +80,7 @@ export default {
     };
   },
   created() {
-    this.fileList = [].concat(this.list);
+    // this.fileList = [].concat(this.list);
   },
   methods: {
     // 阻止文件自动上传
@@ -90,7 +90,7 @@ export default {
     // 限制文件上传格式及大小
     uploadLt(file) {
       if (file.thumbUrl) {
-        return true
+        return true;
       }
       let isJpgOrPng = this.filetype.indexOf(file.type);
       if (isJpgOrPng == -1) {
@@ -131,6 +131,14 @@ export default {
       }
       this.previewImage = file.url || file.preview;
       this.previewVisible = true;
+    },
+  },
+  watch: {
+    list: {
+      immediate: true,
+      handler(n) {
+        this.fileList = [].concat(n);
+      },
     },
   },
 };
