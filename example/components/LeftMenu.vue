@@ -2,7 +2,7 @@
  * @Description: 左侧导航菜单
  * @Author: panrui
  * @Date: 2021-05-24 14:55:57
- * @LastEditTime: 2021-06-03 17:07:16
+ * @LastEditTime: 2021-06-08 14:46:30
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -19,7 +19,7 @@
     <a-sub-menu key="sub1">
       <span slot="title">
         <!-- <a-icon type="user" /> -->
-        <span>Components(4)</span></span
+        <span>Components(8)</span></span
       >
       <a-menu-item key="3">
         <router-link to="/country" tag="span">下拉搜索带保存</router-link>
@@ -32,6 +32,18 @@
       </a-menu-item>
       <a-menu-item key="6">
         <router-link to="/cityPicker" tag="span">省市县联动</router-link>
+      </a-menu-item>
+      <a-menu-item key="7">
+        <router-link to="/wangeditor" tag="span">富文本编辑器</router-link>
+      </a-menu-item>
+      <a-menu-item key="8">
+        <router-link to="/dateSelect" tag="span">时间范围选择器</router-link>
+      </a-menu-item>
+      <a-menu-item key="9">
+        <router-link to="/upload" tag="span">图片上传</router-link>
+      </a-menu-item>
+      <a-menu-item key="10">
+        <router-link to="/selectcol" tag="span">表格指定列展示</router-link>
       </a-menu-item>
     </a-sub-menu>
   </a-menu>
@@ -61,7 +73,7 @@ export default {
 </script>
 <style lang="less" scoped>
 /deep/.ant-menu-item {
-  padding-right: 0!important;
+  padding-right: 0 !important;
   span {
     display: block;
     width: 100%;
