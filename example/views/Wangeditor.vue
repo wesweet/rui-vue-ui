@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       option: {
-        editorText: "123", // 富文本初始化内容
+        editorText: "", // 富文本初始化内容
         uploadFileName: "pic", // 上传的文件名称
         uploadImgServer: "/temple/uploadImage", // 上传的文件接口地址
       },

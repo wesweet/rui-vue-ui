@@ -2,7 +2,7 @@
  * @Description: 富文本组件
  * @Author: panrui
  * @Date: 2021-04-21 18:32:02
- * @LastEditTime: 2021-06-04 16:07:57
+ * @LastEditTime: 2021-06-09 14:23:40
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -25,7 +25,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          editorText: "123", // 富文本初始化内容
+          editorText: "", // 富文本初始化内容
           uploadFileName: "pic", // 上传的文件名称
           uploadImgServer: "/temple/uploadImage", // 上传的文件接口地址
         };

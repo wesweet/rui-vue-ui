@@ -2,7 +2,7 @@
  * @Description: 主页
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-06-09 10:56:20
+ * @LastEditTime: 2021-06-09 14:22:52
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -19,9 +19,9 @@
       <a-layout-content style="overflow-y: auto">
         <router-view></router-view>
       </a-layout-content>
-      <a-layout-footer style="text-align: center">
+      <!-- <a-layout-footer style="text-align: center">
         Ant Design ©2018 Created by Ant UED
-      </a-layout-footer>
+      </a-layout-footer> -->
     </a-layout>
   </a-layout>
 </template>

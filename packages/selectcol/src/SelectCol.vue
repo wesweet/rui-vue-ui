@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-09 10:36:05
+ * @LastEditTime: 2021-06-09 14:21:18
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -235,13 +235,13 @@ export default {
     handEdit(item) {
       this.radioValue = item.value;
       this.inputValue = item.name;
-      this.checkedList = [].concat(
-        item.list.map((item) => {
-          return item.value;
+      this.checkedList = [].concat(item.list);
+      this.precheckedList = [].concat(this.checkedList);
+      this.draggableList = [].concat(
+        this.plainOptions.filter((m) => {
+          return item.list.indexOf(m.value) > -1;
         })
       );
-      this.precheckedList = [].concat(this.checkedList);
-      this.draggableList = [].concat(item.list);
       this.rightboxFlag = this.inputboxFlag = true;
     },
     // 弹窗显示隐藏控制
@@ -286,12 +286,7 @@ export default {
       this.precheckedList = [].concat(checkedList);
     },
     // 拖拽结束
-    handend() {
-      console.log(this.draggableList);
-      // this.checkedList = [].this.draggableList.map((item) => {
-      //   return item.value
-      // })
-    },
+    handend() {},
     // 0重置 1新增 2关闭按钮
     handAdd(status) {
       if (status) {
@@ -304,7 +299,9 @@ export default {
     handSubmit() {
       this.fnSureClick({
         name: this.inputValue,
-        list: this.draggableList,
+        list: this.draggableList.map((item) => {
+          return item.value;
+        }),
         value: Date.parse(new Date()),
       });
       this.handAdd(2);
@@ -323,11 +320,14 @@ export default {
     colData: {
       immediate: true,
       handler(n) {
+        const list = this.plainOptions.map((item) => {
+          return item.value;
+        });
         this.showColData = [
           {
             name: "默认",
             value: -1,
-            list: this.plainOptions,
+            list: list,
           },
         ].concat(n);
       },

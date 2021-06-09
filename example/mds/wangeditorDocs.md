@@ -2,7 +2,7 @@
  * @Description: 富文本编辑器文档
  * @Author: panrui
  * @Date: 2021-06-04 15:27:20
- * @LastEditTime: 2021-06-08 14:47:34
+ * @LastEditTime: 2021-06-09 14:23:23
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -14,7 +14,7 @@
 ```
 ```js
 option: {
-  editorText: '123',
+  editorText: '',
   uploadFileName: 'pic',
   uploadImgServer: 'https://temple/uploadImage'
 }
