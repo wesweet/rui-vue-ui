@@ -1,8 +1,8 @@
 <!--
  * @Author: hxw
  * @Date: 2021-06-04 11:14:58
- * @LastEditTime: 2021-06-04 17:24:16
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-08 14:48:48
+ * @LastEditors: panrui
  * @Description: 自定义时间组件
 -->
 <template>
