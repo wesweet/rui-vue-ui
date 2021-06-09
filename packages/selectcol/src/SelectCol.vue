@@ -2,14 +2,14 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-08 14:53:00
+ * @LastEditTime: 2021-06-09 10:36:05
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <div ref="selectcol" class="channelbox">
     <a-button @click="handCard">
-      测试
+      {{ radioName }}
       <a-icon type="down"></a-icon>
     </a-button>
     <a-card
@@ -39,9 +39,9 @@
                     {{ item.name }}
                   </a-radio>
                 </a-col>
-                <a-col :span="4">
+                <a-col :span="4" v-if="item.value != -1">
                   <a-icon
-                    @click="handDelete(item)"
+                    @click.stop="handDelete(item)"
                     style="margin-right: 10px"
                     type="delete"
                   />
@@ -50,10 +50,16 @@
               </a-row>
             </a-radio-group>
           </div>
+          <a-divider style="margin: 0" />
+          <a-row type="flex" style="margin-left: 15px; padding: 15px 0">
+            <a-col>
+              <a-button type="primary" @click="handAdd(1)"> 新增 </a-button>
+            </a-col>
+          </a-row>
         </div>
         <!-- /leftbox -->
         <!-- rightbox -->
-        <div class="wrapbox">
+        <div class="wrapbox" v-show="rightboxFlag">
           <div class="listbox" style="border-right: 1px solid #eee">
             <a-checkbox-group
               v-model="checkedList"
@@ -68,33 +74,61 @@
           <a-divider style="margin: 0" />
           <a-row type="flex" justify="space-around" style="padding: 15px 0">
             <a-col>
-              <a-button type="primary"> 确认 </a-button>
+              <a-button
+                type="primary"
+                @click="handSubmit"
+                :disabled="submitFlag"
+              >
+                确认
+              </a-button>
             </a-col>
             <a-col>
-              <a-button type="primary"> 重置 </a-button>
+              <a-button type="primary" @click="handAdd(0)"> 重置 </a-button>
             </a-col>
             <a-col>
-              <a-button type="primary"> 关闭 </a-button>
+              <a-button type="primary" @click="handAdd(2)"> 关闭 </a-button>
             </a-col>
           </a-row>
         </div>
-        <div class="wrapbox">
+        <div class="wrapbox" v-show="rightboxFlag">
           <div class="listbox">
-            <div style="padding: 10px">已选择3栏</div>
-            <div style="height: 333px;">
-              <draggable v-model="plainOptions">
+            <div style="padding: 10px">已选择{{ draggableList.length }}栏</div>
+            <div class="draggable-box">
+              <draggable v-model="draggableList" @end="handend">
                 <transition-group>
-                  <div v-for="element in plainOptions" :key="element.value">
-                    {{ element.name }}
+                  <div v-for="(item, index) in draggableList" :key="item.value">
+                    <a-row
+                      type="flex"
+                      justify="space-between"
+                      class="draggable-item"
+                    >
+                      <a-col>
+                        <a-icon type="menu" />
+                        {{ item.name }}
+                      </a-col>
+                      <a-col
+                        @click="handDraDelete(item, index)"
+                        :span="4"
+                        style="text-align: right"
+                      >
+                        <a-icon type="close" />
+                      </a-col>
+                    </a-row>
                   </div>
                 </transition-group>
               </draggable>
             </div>
           </div>
           <a-divider style="margin: 0" />
-          <a-row type="flex" style="padding: 15px 0">
-            <a-col>
-              <a-input placeholder="Basic usage" />
+          <a-row
+            type="flex"
+            align="middle"
+            style="padding: 15px 0"
+            v-if="inputboxFlag"
+          >
+            <a-col :span="6" :offset="3">另存为：</a-col>
+            <a-col :span="14">
+              <a-input v-model="inputValue" placeholder="请输入" />
             </a-col>
           </a-row>
         </div>
@@ -127,25 +161,12 @@ export default {
         return [];
       },
     },
-    // 已保存的区域
-    areaData: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-    isSave: {
-      type: Boolean,
-      default: false,
-    },
+    // 确认按钮回调函数
     fnSureClick: {
       type: Function,
       default: function () {},
     },
-    fnSave: {
-      type: Function,
-      default: function () {},
-    },
+    // 确认删除回调函数
     fnDelete: {
       type: Function,
       default: function () {},
@@ -157,23 +178,20 @@ export default {
       checkNumber: 0, // 当前查询的数量
       styleObject: {}, // 弹窗位置样式
       cardFlag: false, // 卡片默认不展示
-      radioValue: 1,
-      checkedList: [], // 默认设置需要选中的值
-      saveCheckedList: [], // 最近一次选中的值
-      indeterminate: false, // 全选不存在默认选中时设置false 否则设置true
-      checkAll: false,
-      showPlainOptions: [], // 传递过来的数据
-      showAreaData: [], // 已保存过的数据
-      data: [], // 保存的地区
-      value: null, // 保存列表名称
-      checked: false, // 保存勾选状态
-      previewList: [], // 预览数据
+      radioValue: -1, // radio选择的值
+      radioName: "默认", // 选中的值
+      precheckedList: [], // 上一次选择的值
+      checkedList: [], // checkbox当前选择的值
+      draggableList: [], // 拖动数组
+      showColData: [],
+      rightboxFlag: false, // 右侧展开状态
+      inputboxFlag: false, // 输入框展开状态
+      inputValue: "", // 输入框值
     };
   },
   // 实例化初始化完成
-  created() {
-    console.log(456);
-  },
+  beforeCreate() {},
+  created() {},
   // 组件挂在阶段
   mounted() {
     // 点击其他区域关闭弹窗显示
@@ -187,22 +205,44 @@ export default {
   methods: {
     // 给document绑定点击事件
     click(e) {
-      const _this = this;
-      if (_this.$refs.selectcol && _this.$refs.selectcol.contains(e.target)) {
+      if (this.$refs.selectcol && this.$refs.selectcol.contains(e.target)) {
         return;
       }
-      _this.cardFlag = false;
-      // _this.checkedList = [];
-      // _this.cardFlag = _this.indeterminate = _this.checkAll = _this.checked = false;
+      this.handAdd(2);
+      this.radioValue = this.showColData.find((item) => {
+        return item.name == this.radioName;
+      }).value;
+      this.cardFlag = false;
     },
+    // radio选中
     handRadioChange(e) {
-      console.log("radio checked", e.target.value);
+      const data = this.showColData.find((item) => {
+        return item.value == e.target.value;
+      });
+      this.radioName = data.name;
+      this.radioValue = data.value;
+      this.handCard();
     },
+    // 删除功能
     handDelete(item) {
-      console.log(item);
+      if (item.value == this.radioValue) {
+        this.radioValue = this.showColData[0].value;
+        this.radioName = this.showColData[0].name;
+      }
+      this.fnDelete(item.value);
     },
+    // 编辑功能
     handEdit(item) {
-      console.log(item);
+      this.radioValue = item.value;
+      this.inputValue = item.name;
+      this.checkedList = [].concat(
+        item.list.map((item) => {
+          return item.value;
+        })
+      );
+      this.precheckedList = [].concat(this.checkedList);
+      this.draggableList = [].concat(item.list);
+      this.rightboxFlag = this.inputboxFlag = true;
     },
     // 弹窗显示隐藏控制
     handCard() {
@@ -211,7 +251,7 @@ export default {
         this.initFlag = !this.initFlag;
         document.body.clientWidth -
           this.$refs.selectcol.getBoundingClientRect().left >
-        (this.isSave ? 600 : 300)
+        (this.rightboxFlag ? 600 : 300)
           ? (this.styleObject = {
               left: 0,
             })
@@ -220,19 +260,65 @@ export default {
             });
       }
       this.cardFlag = !this.cardFlag;
-      if (this.cardFlag && this.saveCheckedList.length) {
-        // 弹窗打开条件
-        this.checkedList = [].concat(this.saveCheckedList); // 还原上一次选中的值
-        this.handCheckboxChange(this.checkedList);
-      }
     },
-    handCheckboxChange() {
-      
-    }
+    // checkbox选中的值 checkedList
+    handCheckboxChange(checkedList) {
+      let list = [];
+      if (checkedList.length > this.precheckedList.length) {
+        // 新增
+        list = this.checkedList.filter((item) => {
+          return this.precheckedList.indexOf(item) == -1;
+        });
+        const data = this.plainOptions.filter((item) => {
+          return list.indexOf(item.value) > -1;
+        });
+        this.draggableList = this.draggableList.concat(data);
+      } else {
+        // 删除
+        list = this.precheckedList.filter((item) => {
+          return this.checkedList.indexOf(item) == -1;
+        });
+        const index = this.draggableList.findIndex((item) => {
+          return item.value == list[0];
+        });
+        this.draggableList.splice(index, 1);
+      }
+      this.precheckedList = [].concat(checkedList);
+    },
+    // 拖拽结束
+    handend() {
+      console.log(this.draggableList);
+      // this.checkedList = [].this.draggableList.map((item) => {
+      //   return item.value
+      // })
+    },
+    // 0重置 1新增 2关闭按钮
+    handAdd(status) {
+      if (status) {
+        this.rightboxFlag = this.inputboxFlag = status == 1 ? true : false;
+      }
+      this.precheckedList = this.checkedList = this.draggableList = [];
+      this.inputValue = "";
+    },
+    // 确认按钮
+    handSubmit() {
+      this.fnSureClick({
+        name: this.inputValue,
+        list: this.draggableList,
+        value: Date.parse(new Date()),
+      });
+      this.handAdd(2);
+    },
+    // 拖动组件删除功能
+    handDraDelete(item, index) {
+      this.draggableList.splice(index, 1);
+      const list = this.checkedList.filter((m) => {
+        return m != item.value;
+      });
+      this.checkedList = [].concat(list);
+      this.precheckedList = [].concat(list);
+    },
   },
-  /**
-   * 监听当前日期默认日期改变触发
-   */
   watch: {
     colData: {
       immediate: true,
@@ -247,9 +333,15 @@ export default {
       },
     },
   },
+  computed: {
+    // 提交按钮状态
+    submitFlag() {
+      return this.inputValue && this.draggableList.length ? false : true;
+    },
+  },
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .channelbox {
   position: relative;
   display: inline-block;
@@ -263,22 +355,10 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     /deep/ .ant-card-body {
       padding: 0;
-      .cardbox-search {
-        padding: 10px;
-        border-bottom: 1px solid #e8e8e8;
-      }
-      .cardbox-checkall {
-        padding: 10px;
-        border-bottom: 1px solid #e8e8e8;
-      }
       .contbox {
         display: flex;
         .wrapbox {
           min-width: 250px;
-          &.small {
-            // min-width: 220px;
-            padding: 10px;
-          }
           .checkbox {
             min-width: 250px;
             padding: 10px;
@@ -307,14 +387,8 @@ export default {
               }
             }
           }
-          .inputbox {
-            padding: 10px;
-          }
-          .btnbox {
-            padding: 10px;
-          }
           .listbox {
-            height: 400px;
+            height: 280px;
             width: 250px;
             box-sizing: border-box;
             overflow-y: auto;
@@ -346,6 +420,29 @@ export default {
             }
             .ant-row-flex {
               margin-bottom: 10px;
+            }
+            .draggable-box {
+              height: 230px;
+              padding: 0 10px;
+              overflow-y: auto;
+              &::-webkit-scrollbar {
+                width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
+                height: 4px;
+                scrollbar-arrow-color: #e94c4b;
+              }
+              &::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background-color: rgba(0, 0, 0, 0.25);
+              }
+              &::-webkit-scrollbar-track {
+                border-radius: 5px;
+                background-color: #eeeeee;
+              }
+              .draggable-item {
+                margin-bottom: 5px;
+                padding: 4px 8px 4px 0;
+                background-color: #efefef;
+              }
             }
             .ellipsis {
               display: block;

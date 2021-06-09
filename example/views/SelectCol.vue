@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件
  * @Author: panrui
  * @Date: 2021-06-07 14:51:40
- * @LastEditTime: 2021-06-08 14:43:06
+ * @LastEditTime: 2021-06-09 10:38:52
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -12,6 +12,8 @@
       <mj-select-col
         :plainOptions="plainOptions"
         :colData="colData"
+        :fnSureClick="fnSureClick"
+        :fnDelete="fnDelete"
       ></mj-select-col>
     </a-card>
     <a-row type="flex">
@@ -76,27 +78,21 @@ export default {
           value: 11,
         },
       ],
-      colData: [
-        {
-          name: "设置",
-          value: 0,
-          list: [
-            {
-              name: "展示",
-              value: 1,
-            },
-            {
-              name: "cpm",
-              value: 2,
-            },
-            {
-              name: "点击",
-              value: 3,
-            },
-          ],
-        },
-      ],
+      colData: [],
     };
+  },
+  methods: {
+    // 确认按钮回调
+    fnSureClick(option) {
+      this.colData = this.colData.concat(option);
+    },
+    // 确认删除回调
+    fnDelete(option) {
+      const index = this.colData.findIndex((item) => {
+        return item.value == option;
+      });
+      this.colData.splice(index, 1);
+    },
   },
 };
 </script>
