@@ -2,12 +2,18 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-06-09 16:42:10
+ * @LastEditTime: 2021-06-09 17:52:44
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
+
+### 0.2.0
+
+- __新增预览组件__
+
+- 修复上传组件(upload)无法预览 bug
 
 ### 0.1.9
 

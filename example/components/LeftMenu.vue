@@ -2,29 +2,24 @@
  * @Description: 左侧导航菜单
  * @Author: panrui
  * @Date: 2021-05-24 14:55:57
- * @LastEditTime: 2021-06-09 16:10:08
+ * @LastEditTime: 2021-06-09 19:10:51
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
     <a-menu-item key="1">
-      <!-- <a-icon type="home" /> -->
       <router-link to="/" tag="span">首页</router-link>
     </a-menu-item>
     <a-menu-item key="2">
-      <!-- <a-icon type="home" /> -->
       <router-link to="/start" tag="span">快速上手</router-link>
     </a-menu-item>
     <a-menu-item key="3">
-      <!-- <a-icon type="home" /> -->
       <router-link to="/changelog" tag="span">更新日志</router-link>
     </a-menu-item>
-    
     <a-sub-menu key="4">
       <span slot="title">
-        <!-- <a-icon type="user" /> -->
-        <span>Components(8)</span></span
+        <span>Components(9)</span></span
       >
       <a-menu-item key="4_1">
         <router-link to="/country" tag="span">下拉搜索带保存</router-link>
@@ -49,6 +44,9 @@
       </a-menu-item>
       <a-menu-item key="4_8">
         <router-link to="/selectcol" tag="span">表格指定列展示</router-link>
+      </a-menu-item>
+      <a-menu-item key="4_9">
+        <router-link to="/preview" tag="span">图片预览</router-link>
       </a-menu-item>
     </a-sub-menu>
   </a-menu>

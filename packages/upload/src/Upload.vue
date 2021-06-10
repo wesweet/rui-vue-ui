@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:15:00
- * @LastEditTime: 2021-06-09 16:22:28
+ * @LastEditTime: 2021-06-09 18:57:42
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -108,7 +108,6 @@ export default {
     },
     // 文件发生改变
     handleChange({ fileList }) {
-      // console.log(fileList, '文件变更')
       if (
         fileList.every((item) => {
           return this.uploadLt(item);
@@ -120,16 +119,15 @@ export default {
     },
     // 文件删除时回调
     handRemove() {
-      // console.log(file, '删除文件')
     },
     handleCancel() {
       this.previewVisible = false;
     },
     async handlePreview(file) {
-      if (!file.url && !file.preview) {
+      if (!file.thumbUrl && !file.preview) {
         file.preview = await getBase64(file.originFileObj);
       }
-      this.previewImage = file.url || file.preview;
+      this.previewImage = file.thumbUrl || file.preview;
       this.previewVisible = true;
     },
   },

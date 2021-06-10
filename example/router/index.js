@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-06-09 16:12:14
+ * @LastEditTime: 2021-06-09 18:00:48
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -66,6 +66,11 @@ const routes = [{
         path: "selectcol",
         name: "SelectCol",
         component: () => import("../views/SelectCol.vue"),
+      },
+      {
+        path: "preview",
+        name: "Preview",
+        component: () => import("../views/Preview.vue"),
       }
     ]
   },

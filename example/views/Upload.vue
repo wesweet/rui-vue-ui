@@ -2,15 +2,14 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:08:53
- * @LastEditTime: 2021-06-09 16:20:16
+ * @LastEditTime: 2021-06-09 18:02:24
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <div class="upload-box">
     <a-card title="upload组件使用展示" style="width: 500px">
-      <mj-upload :list="fileList" :fnCallback="fnCallback"></mj-upload>
-      <a-button @click="handClick">编辑</a-button>
+      <mj-upload :list="form.fileList" :fnCallback="fnCallback"></mj-upload>
     </a-card>
     <a-row type="flex">
       <a-col :span="20" class="markdown-body">
@@ -28,20 +27,22 @@ export default {
   },
   data() {
     return {
-      fileList: [
-        // {
-        //   uid: "-1",
-        //   name: "image.png",
-        //   // status: "done",
-        //   thumbUrl:
-        //     "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-        // },
-        // {
-        //   uid: "-5",
-        //   name: "image.png",
-        //   status: "error",
-        // },
-      ],
+      form: {
+        fileList: [
+          {
+            uid: "-1",
+            name: "image.png",
+            // status: "done",
+            thumbUrl:
+              "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+          },
+          // {
+          //   uid: "-5",
+          //   name: "image.png",
+          //   status: "error",
+          // },
+        ],
+      },
     };
   },
   methods: {
@@ -49,15 +50,22 @@ export default {
       console.log(option);
     },
     handClick() {
-      this.fileList = [
-        {
-          uid: "-1",
-          name: "image.png",
-          // status: "done",
-          thumbUrl:
-            "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-        },
-      ];
+      // this.form.fileList.push({
+      //   uid: "-1",
+      //   name: "image.png",
+      //   // status: "done",
+      //   thumbUrl:
+      //     "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      // });
+      // this.fileList = [
+      //   {
+      //     uid: "-1",
+      //     name: "image.png",
+      //     // status: "done",
+      //     thumbUrl:
+      //       "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      //   },
+      // ];
     },
   },
 };
