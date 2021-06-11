@@ -2,7 +2,7 @@
  * @Description: 省市县联动组件
  * @Author: panrui
  * @Date: 2021-06-03 16:02:13
- * @LastEditTime: 2021-06-08 14:47:46
+ * @LastEditTime: 2021-06-11 16:42:57
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -10,7 +10,7 @@
   <div class="city-picker-box">
     <a-card title="citypicker组件使用展示" style="width: 500px">
       <mj-city-picker
-        :isLevel="1"
+        :isLevel="3"
         province="河北省"
         city="唐山市"
         area="路南区"

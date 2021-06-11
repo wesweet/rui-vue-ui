@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-09 16:39:42
+ * @LastEditTime: 2021-06-11 18:20:14
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -304,7 +304,7 @@ export default {
         list: this.draggableList.map((item) => {
           return item.value;
         }),
-        value: this.editValue ? this.editValue : '',
+        value: this.editValue ? this.editValue : "",
       });
       this.handAdd(2);
     },
@@ -349,13 +349,13 @@ export default {
   display: inline-block;
   color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
-  .cardbox {
+  /deep/.ant-card {
     position: absolute;
     top: 33px;
     z-index: 9;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    /deep/ .ant-card-body {
+    .ant-card-body {
       padding: 0;
       .contbox {
         display: flex;
@@ -459,5 +459,6 @@ export default {
       }
     }
   }
+  
 }
 </style>
