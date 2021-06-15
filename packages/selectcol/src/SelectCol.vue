@@ -2,22 +2,17 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-11 18:20:14
+ * @LastEditTime: 2021-06-15 11:42:12
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
-  <div ref="selectcol" class="channelbox">
+  <div ref="selectcol" class="selectColBox">
     <a-button @click="handCard">
       {{ radioName }}
       <a-icon type="down"></a-icon>
     </a-button>
-    <a-card
-      v-show="cardFlag"
-      :bordered="false"
-      class="cardbox"
-      :style="styleObject"
-    >
+    <a-card v-show="cardFlag" :bordered="false" :style="styleObject">
       <div class="contbox">
         <!-- leftbox -->
         <div class="wrapbox" style="border-right: 1px solid #eee">
@@ -344,12 +339,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.channelbox {
+.selectColBox {
   position: relative;
   display: inline-block;
   color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
-  /deep/.ant-card {
+  /deep/ .ant-card {
     position: absolute;
     top: 33px;
     z-index: 9;
@@ -357,108 +352,79 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     .ant-card-body {
       padding: 0;
-      .contbox {
+      .ant-radio-group {
         display: flex;
-        .wrapbox {
-          min-width: 250px;
-          .checkbox {
-            min-width: 250px;
-            padding: 10px;
-            .ant-checkbox-group {
-              height: 100%;
-              width: 100%;
-              overflow-y: auto;
-              &::-webkit-scrollbar {
-                width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
-                height: 4px;
-                scrollbar-arrow-color: #e94c4b;
-              }
-              &::-webkit-scrollbar-thumb {
-                border-radius: 10px;
-                background-color: rgba(0, 0, 0, 0.25);
-              }
-              &::-webkit-scrollbar-track {
-                border-radius: 5px;
-                background-color: #eeeeee;
-              }
-              .ant-checkbox-group-item {
-                display: block;
-                text-align: left;
-                white-space: nowrap;
-                word-break: break-all;
-              }
-            }
+        flex-direction: column;
+        padding: 10px;
+        .ant-row-flex {
+          margin-bottom: 10px;
+        }
+      }
+      .ant-checkbox-group {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        .ant-checkbox-group-item {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+  .contbox {
+    display: flex;
+    .wrapbox {
+      min-width: 250px;
+      .listbox {
+        height: 280px;
+        width: 250px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
+          height: 4px;
+          scrollbar-arrow-color: #e94c4b;
+        }
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background-color: rgba(0, 0, 0, 0.25);
+        }
+        &::-webkit-scrollbar-track {
+          border-radius: 5px;
+          background-color: #eeeeee;
+        }
+        .draggable-box {
+          height: 230px;
+          padding: 0 10px;
+          overflow-y: auto;
+          &::-webkit-scrollbar {
+            width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
+            height: 4px;
+            scrollbar-arrow-color: #e94c4b;
           }
-          .listbox {
-            height: 280px;
-            width: 250px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            &::-webkit-scrollbar {
-              width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
-              height: 4px;
-              scrollbar-arrow-color: #e94c4b;
-            }
-            &::-webkit-scrollbar-thumb {
-              border-radius: 10px;
-              background-color: rgba(0, 0, 0, 0.25);
-            }
-            &::-webkit-scrollbar-track {
-              border-radius: 5px;
-              background-color: #eeeeee;
-            }
-            .ant-checkbox-group {
-              display: flex;
-              flex-direction: column;
-              padding: 10px;
-              .ant-checkbox-group-item {
-                margin-bottom: 12px;
-              }
-            }
-            .ant-radio-group {
-              display: flex;
-              flex-direction: column;
-              padding: 10px;
-            }
-            .ant-row-flex {
-              margin-bottom: 10px;
-            }
-            .draggable-box {
-              height: 230px;
-              padding: 0 10px;
-              overflow-y: auto;
-              &::-webkit-scrollbar {
-                width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
-                height: 4px;
-                scrollbar-arrow-color: #e94c4b;
-              }
-              &::-webkit-scrollbar-thumb {
-                border-radius: 10px;
-                background-color: rgba(0, 0, 0, 0.25);
-              }
-              &::-webkit-scrollbar-track {
-                border-radius: 5px;
-                background-color: #eeeeee;
-              }
-              .draggable-item {
-                margin-bottom: 5px;
-                padding: 4px 8px 4px 0;
-                background-color: #efefef;
-              }
-            }
-            .ellipsis {
-              display: block;
-              width: 100%;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              word-break: break-all;
-              overflow: hidden;
-            }
+          &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.25);
+          }
+          &::-webkit-scrollbar-track {
+            border-radius: 5px;
+            background-color: #eeeeee;
+          }
+          .draggable-item {
+            margin-bottom: 5px;
+            padding: 4px 8px 4px 0;
+            background-color: #efefef;
           }
         }
       }
     }
   }
-  
+}
+.ellipsis {
+  display: block;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  overflow: hidden;
 }
 </style>

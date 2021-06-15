@@ -2,7 +2,7 @@
  * @Description: 项目入口文件
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-06-07 18:18:09
+ * @LastEditTime: 2021-06-15 11:46:21
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -12,8 +12,10 @@ import router from "./router";
 import store from "./store";
 import Antd from "ant-design-vue";
 import MjUI from '../packages'
+// import MjUI from "mujoy-ui";
 import "github-markdown-css";
 import "ant-design-vue/dist/antd.css";
+// import 'mujoy-ui/lib/mj-ui.css'
 Vue.use(MjUI)
 Vue.use(Antd)
 

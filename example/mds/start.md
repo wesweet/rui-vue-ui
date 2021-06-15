@@ -2,7 +2,7 @@
  * @Description: 快速开始文档
  * @Author: panrui
  * @Date: 2021-05-26 11:06:53
- * @LastEditTime: 2021-06-11 17:30:52
+ * @LastEditTime: 2021-06-15 11:45:46
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -24,9 +24,10 @@ npm update mujoy-ui
 在 mian.js 中写入以下内容
 
 ```js
-import MjUI from "mujoy-ui";
+import MjUI from 'mujoy-ui'
+import 'mujoy-ui/lib/mj-ui.css'
 
-Vue.use(MjUI);
+Vue.use(MjUI)
 ```
 
 #### 按需引入

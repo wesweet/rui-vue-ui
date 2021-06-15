@@ -2,12 +2,12 @@
  * @Description: 多选带搜索保存插件
  * @Author: panrui
  * @Date: 2021-05-21 18:14:45
- * @LastEditTime: 2021-06-08 14:48:38
+ * @LastEditTime: 2021-06-15 10:17:55
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
-  <div ref="country" class="channelbox">
+  <div ref="country" class="countryBox">
     <a-button @click="handCard">
       <template v-if="checkNumber > 0">
         <!-- {{ $t('others.hasChoice') }} -->
@@ -381,7 +381,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.channelbox {
+.countryBox {
   position: relative;
   display: inline-block;
   color: rgba(0, 0, 0, 0.65);

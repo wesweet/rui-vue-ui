@@ -2,12 +2,16 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-06-11 17:53:57
+ * @LastEditTime: 2021-06-15 11:49:09
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
+
+### 0.2.3
+
+- **修改组件库使用，需要引入 css 文件**
 
 ### 0.2.1
 
