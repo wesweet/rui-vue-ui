@@ -2,7 +2,7 @@
  * @Description: 引入组件
  * @Author: panrui
  * @Date: 2021-05-21 18:23:19
- * @LastEditTime: 2021-06-09 17:57:05
+ * @LastEditTime: 2021-06-15 17:55:57
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -54,7 +54,7 @@ export {
   MjUpload,
   MjSelectCol,
   MjPreview,
-}
+};
 
 export default {
   install,

@@ -2,7 +2,7 @@
  * @Description: 年度选择组件
  * @Author: panrui
  * @Date: 2021-06-03 13:52:35
- * @LastEditTime: 2021-06-03 15:48:16
+ * @LastEditTime: 2021-06-15 17:55:15
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -37,7 +37,7 @@
 <script>
 import moment from "moment";
 export default {
-  name: 'MjSelectYear',
+  name: "MjSelectYear",
   props: {
     fnSelectYear: {
       type: Function,

@@ -1,7 +1,7 @@
 <!--
  * @Author: hxw
  * @Date: 2021-06-04 11:14:58
- * @LastEditTime: 2021-06-08 14:48:48
+ * @LastEditTime: 2021-06-15 17:54:09
  * @LastEditors: panrui
  * @Description: 自定义时间组件
 -->
@@ -43,52 +43,61 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment";
 export default {
-  name: 'MjDateSelect',
+  name: "MjDateSelect",
   props: {
     fnSelectDate: {
       type: Function,
-      default: function () {}
+      default: function () {},
     },
     compareAllowClear: {
       type: Boolean,
-      default: true
+      default: true,
     },
     currentDisabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     defaultValue: {
       type: Array,
       default() {
-        return []
-      }
+        return [];
+      },
     },
     compareDefaultValue: {
       type: Array,
       default() {
-        return []
-      }
-    }
+        return [];
+      },
+    },
   },
   data() {
     return {
       // 预设常用日期范围快捷方式
       ranges: {
         今日: () => [moment(), moment()],
-        昨日: () => [moment().startOf('day').subtract(1, 'days'), moment().endOf('day').subtract(1, 'days')],
-        最近7日: () => [moment().startOf('day').subtract(6, 'days'), moment()],
-        最近30日: () => [moment().startOf('day').subtract(29, 'days'), moment()],
-        本月: () => [moment().startOf('month'), moment().endOf('month').endOf('month')],
+        昨日: () => [
+          moment().startOf("day").subtract(1, "days"),
+          moment().endOf("day").subtract(1, "days"),
+        ],
+        最近7日: () => [moment().startOf("day").subtract(6, "days"), moment()],
+        最近30日: () => [
+          moment().startOf("day").subtract(29, "days"),
+          moment(),
+        ],
+        本月: () => [
+          moment().startOf("month"),
+          moment().endOf("month").endOf("month"),
+        ],
         上月: () => [
           moment()
             .month(moment().month() - 1)
-            .startOf('month'),
+            .startOf("month"),
           moment()
             .month(moment().month() - 1)
-            .endOf('month')
-        ]
+            .endOf("month"),
+        ],
       },
       // 对比日期
       ranges_1: {},
@@ -103,10 +112,10 @@ export default {
       // 禁止选择未来的日期
       disabledDate(current) {
         // Can not select days before today and today
-        return current && current > moment().endOf('day')
+        return current && current > moment().endOf("day");
       },
-      formatDate: 'YYYY-MM-DD'
-    }
+      formatDate: "YYYY-MM-DD",
+    };
   },
   methods: {
     /**
@@ -118,22 +127,22 @@ export default {
      */
     onChange(dates, dateStrings) {
       // 设置开始时间
-      this.startTime = dateStrings[0]
+      this.startTime = dateStrings[0];
       // 设置结束时间
-      this.endTime = dateStrings[1]
+      this.endTime = dateStrings[1];
       // 计算两个时间间隔天数
-      this.diffTime = dates[1].diff(dates[0], 'days')
+      this.diffTime = dates[1].diff(dates[0], "days");
       // 判断是否选择过对比日期
       if (this.ekey) {
         if (this.ekey > 3) {
-          this.setContrastTime()
+          this.setContrastTime();
         } else {
           this.handleMenuClick({
-            key: this.ekey
-          })
+            key: this.ekey,
+          });
         }
       } else {
-        this.selectCallback()
+        this.selectCallback();
       }
     },
     /**
@@ -141,31 +150,31 @@ export default {
      */
     handOpenChange() {
       if (this.contrastTime.length === 0) {
-        this.is_show = false
+        this.is_show = false;
       } else {
-        this.is_open = false
+        this.is_open = false;
       }
     },
     /**
      * 对比时间插件改变回调函数
      */
     handCalendarChange(dates) {
-      this.is_open = false
+      this.is_open = false;
       if (dates.length === 1) {
-        this.timeStr = dates[0].format(this.formatDate)
+        this.timeStr = dates[0].format(this.formatDate);
       }
       // 设置时间
-      this.setContrastTime()
+      this.setContrastTime();
     },
     /**
      * 对比时间范围确定回调函数
      */
     handOnChange(dates) {
       if (dates.length === 0) {
-        this.is_show = false
-        this.ekey = null
+        this.is_show = false;
+        this.ekey = null;
       }
-      this.selectCallback()
+      this.selectCallback();
     },
     /**
      * 设定对比时间
@@ -173,42 +182,45 @@ export default {
     setContrastTime() {
       this.contrastTime = [
         moment(this.timeStr),
-        this.disabledDate(moment(this.timeStr).add(this.diffTime, 'd'))
-          ? moment().endOf('day')
-          : moment(this.timeStr).add(this.diffTime, 'd')
-      ]
-      this.selectCallback()
+        this.disabledDate(moment(this.timeStr).add(this.diffTime, "d"))
+          ? moment().endOf("day")
+          : moment(this.timeStr).add(this.diffTime, "d"),
+      ];
+      this.selectCallback();
     },
     /**
      * 对比菜单切换触发
      */
     handleMenuClick(e) {
-      const key = parseInt(e.key)
-      this.ekey = key
-      this.is_show = true
+      const key = parseInt(e.key);
+      this.ekey = key;
+      this.is_show = true;
       switch (key) {
         case 1:
-          this.contrastTime = [moment(this.startTime).subtract(1, 'd'), moment(this.endTime).subtract(1, 'd')]
-          break
+          this.contrastTime = [
+            moment(this.startTime).subtract(1, "d"),
+            moment(this.endTime).subtract(1, "d"),
+          ];
+          break;
         case 2:
           this.contrastTime = [
-            moment(this.startTime).subtract(1, 'w'),
-            moment(this.startTime).subtract(1, 'w').add(this.diffTime, 'd')
-          ]
-          break
+            moment(this.startTime).subtract(1, "w"),
+            moment(this.startTime).subtract(1, "w").add(this.diffTime, "d"),
+          ];
+          break;
         case 3:
           this.contrastTime = [
-            moment(this.startTime).subtract(1, 'M'),
-            moment(this.startTime).subtract(1, 'M').add(this.diffTime, 'd')
-          ]
-          break
+            moment(this.startTime).subtract(1, "M"),
+            moment(this.startTime).subtract(1, "M").add(this.diffTime, "d"),
+          ];
+          break;
         case 4:
-          this.is_open = true
-          break
+          this.is_open = true;
+          break;
         default:
-          break
+          break;
       }
-      key !== 4 && this.selectCallback()
+      key !== 4 && this.selectCallback();
     },
     /**
      * 确认时间后组件回调
@@ -217,10 +229,16 @@ export default {
       this.fnSelectDate({
         start_time: this.startTime,
         end_time: this.endTime,
-        compare_start_time: this.contrastTime.length > 0 ? this.contrastTime[0].format(this.formatDate) : null,
-        compare_end_time: this.contrastTime.length > 0 ? this.contrastTime[1].format(this.formatDate) : null
-      })
-    }
+        compare_start_time:
+          this.contrastTime.length > 0
+            ? this.contrastTime[0].format(this.formatDate)
+            : null,
+        compare_end_time:
+          this.contrastTime.length > 0
+            ? this.contrastTime[1].format(this.formatDate)
+            : null,
+      });
+    },
   },
   /**
    * 监听当前日期默认日期改变触发
@@ -230,23 +248,23 @@ export default {
       immediate: true,
       handler(n) {
         // 设置开始时间
-        this.startTime = n[0].format(this.formatDate)
+        this.startTime = n[0].format(this.formatDate);
         // 设置结束时间
-        this.endTime = n[1].format(this.formatDate)
+        this.endTime = n[1].format(this.formatDate);
         // 计算两个时间间隔天数
-        this.diffTime = n[1].diff(n[0], 'days')
-      }
+        this.diffTime = n[1].diff(n[0], "days");
+      },
     },
     compareDefaultValue: {
       immediate: true,
       handler(n) {
         if (n.length > 0) {
           this.handleMenuClick({
-            key: 1
-          })
+            key: 1,
+          });
         }
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 </script>

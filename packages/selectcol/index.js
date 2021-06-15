@@ -6,8 +6,8 @@
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
-import MjSelectCol from './src/SelectCol'
-MjSelectCol.install = Vue => {
-  Vue.component(MjSelectCol.name, MjSelectCol)
-}
-export default MjSelectCol
+import MjSelectCol from "./src/SelectCol";
+MjSelectCol.install = (Vue) => {
+  Vue.component(MjSelectCol.name, MjSelectCol);
+};
+export default MjSelectCol;

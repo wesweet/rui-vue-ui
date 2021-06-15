@@ -2,7 +2,7 @@
  * @Description: Select组件
  * @Author: panrui
  * @Date: 2021-06-03 12:08:47
- * @LastEditTime: 2021-06-08 14:47:59
+ * @LastEditTime: 2021-06-15 17:52:38
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -37,13 +37,13 @@ export default {
         { value: 2, name: "热血三国2" },
         { value: 3, name: "热血三国3" },
       ],
-      defaultValue: 1
+      defaultValue: 1,
     };
   },
   methods: {
     changeSelect(option) {
-      console.log(option)
-      this.defaultValue = option.value
+      console.log(option);
+      this.defaultValue = option.value;
     },
   },
 };

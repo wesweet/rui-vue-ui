@@ -36,8 +36,8 @@ export default {
     // 取消弹窗回调
     previewCancel: {
       type: Function,
-      default() {}
-    }
+      default() {},
+    },
   },
   created() {},
   data() {
@@ -48,7 +48,7 @@ export default {
   methods: {
     handleCancel() {
       // this.previewVisible = false;
-      this.previewCancel()
+      this.previewCancel();
     },
     handLoad() {
       this.width = this.$refs.img.width + 48;

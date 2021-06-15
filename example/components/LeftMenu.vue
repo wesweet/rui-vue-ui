@@ -2,7 +2,7 @@
  * @Description: 左侧导航菜单
  * @Author: panrui
  * @Date: 2021-05-24 14:55:57
- * @LastEditTime: 2021-06-09 19:10:51
+ * @LastEditTime: 2021-06-15 17:50:55
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -18,9 +18,7 @@
       <router-link to="/changelog" tag="span">更新日志</router-link>
     </a-menu-item>
     <a-sub-menu key="4">
-      <span slot="title">
-        <span>Components(9)</span></span
-      >
+      <span slot="title"> <span>Components(9)</span></span>
       <a-menu-item key="4_1">
         <router-link to="/country" tag="span">下拉搜索带保存</router-link>
       </a-menu-item>

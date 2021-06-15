@@ -1,7 +1,13 @@
+<!--
+ * @Description: 
+ * @Author: panrui
+ * @Date: 2021-05-21 18:02:50
+ * @LastEditTime: 2021-06-15 17:50:39
+ * @LastEditors: panrui
+ * 不忘初心,不负梦想
+-->
 <template>
-  <div class="hello">
-
-  </div>
+  <div class="hello"></div>
 </template>
 
 <script>
@@ -10,9 +16,7 @@ export default {
   props: {
     msg: String,
   },
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 

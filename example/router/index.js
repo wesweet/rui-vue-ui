@@ -1,8 +1,8 @@
 /*
- * @Description: 
+ * @Description:路由定义
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-06-09 18:00:48
+ * @LastEditTime: 2021-06-15 17:51:36
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -12,12 +12,14 @@ import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+  {
     path: "/",
     name: "Home",
     component: Home,
     // redirect: "/start",
-    children: [{
+    children: [
+      {
         path: "start",
         name: "Start",
         component: () => import("../views/Start.vue"),
@@ -25,7 +27,7 @@ const routes = [{
       {
         path: "changelog",
         name: "ChangeLog",
-        component: () => import("../views/ChangeLog.vue")
+        component: () => import("../views/ChangeLog.vue"),
       },
       {
         path: "country",
@@ -71,8 +73,8 @@ const routes = [{
         path: "preview",
         name: "Preview",
         component: () => import("../views/Preview.vue"),
-      }
-    ]
+      },
+    ],
   },
   {
     path: "/about",
@@ -80,8 +82,7 @@ const routes = [{
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import("../views/About.vue"),
+    component: () => import("../views/About.vue"),
   },
 ];
 

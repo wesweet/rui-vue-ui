@@ -6,8 +6,8 @@
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
-import MjSelectYear from './src/SelectYear'
-MjSelectYear.install = Vue => {
-  Vue.component(MjSelectYear.name, MjSelectYear)
-}
-export default MjSelectYear
+import MjSelectYear from "./src/SelectYear";
+MjSelectYear.install = (Vue) => {
+  Vue.component(MjSelectYear.name, MjSelectYear);
+};
+export default MjSelectYear;
