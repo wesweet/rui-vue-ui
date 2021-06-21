@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-21 14:59:05
+ * @LastEditTime: 2021-06-21 16:05:04
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -320,6 +320,18 @@ export default {
     },
   },
   watch: {
+    plainOptions: {
+      immediate: true,
+      handler(n) {
+        if (this.showColData[0]) {
+          this.showColData[0].list = [].concat(
+            n.map((item) => {
+              return item.value;
+            })
+          );
+        }
+      },
+    },
     colData: {
       immediate: true,
       handler(n) {
@@ -347,6 +359,7 @@ export default {
 <style lang="scss" scoped>
 .selectColBox {
   position: relative;
+  z-index: 20;
   display: inline-block;
   color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
