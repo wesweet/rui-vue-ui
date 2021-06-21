@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-21 16:05:04
+ * @LastEditTime: 2021-06-21 17:30:20
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -240,11 +240,15 @@ export default {
       this.inputValue = item.name;
       this.checkedList = [].concat(item.list);
       this.precheckedList = [].concat(this.checkedList);
-      this.draggableList = [].concat(
-        this.plainOptions.filter((m) => {
-          return item.list.indexOf(m.value) > -1;
-        })
-      );
+      let _draggableList = [];
+      item.list.map((m) => {
+        this.plainOptions.map((n) => {
+          if (m == n.value) {
+            _draggableList.push(n);
+          }
+        });
+      });
+      this.draggableList = [].concat(_draggableList);
       this.rightboxFlag = this.inputboxFlag = true;
     },
     // 弹窗显示隐藏控制
@@ -289,7 +293,9 @@ export default {
       this.precheckedList = [].concat(checkedList);
     },
     // 拖拽结束
-    handend() {},
+    handend() {
+      console.log(this.draggableList);
+    },
     // 0重置 1新增 2关闭按钮
     handAdd(status) {
       if (status) {

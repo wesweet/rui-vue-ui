@@ -2,17 +2,22 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-06-21 16:05:43
+ * @LastEditTime: 2021-06-21 17:45:58
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
 
+### 0.2.9
+
+- **修复 SelectCol 组件，拖拽排序显示异常 bug**
+
 ### 0.2.8
 
 - **修复 SelectCol 组件，表格列数据(异步获取)无法更新 bug**
-- 修改 SelectCol 组件 z-index值
+- 修改 SelectCol 组件 z-index 值
+
 ### 0.2.4
 
 - SelectCol 组件 新增 选择已保存列回调功能
