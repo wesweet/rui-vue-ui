@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-15 17:54:55
+ * @LastEditTime: 2021-06-21 14:59:05
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -156,6 +156,11 @@ export default {
         return [];
       },
     },
+    // 勾选保存组回调
+    fnOnchangeClick: {
+      type: Function,
+      default: function () {},
+    },
     // 确认按钮回调函数
     fnSureClick: {
       type: Function,
@@ -217,6 +222,7 @@ export default {
       });
       this.radioName = data.name;
       this.radioValue = data.value;
+      this.fnOnchangeClick(data);
       this.handCard();
     },
     // 删除功能

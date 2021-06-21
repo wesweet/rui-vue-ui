@@ -2,12 +2,15 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-06-15 17:51:29
+ * @LastEditTime: 2021-06-21 15:04:12
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
+
+### 0.2.4
+- SelectCol组件 新增 选择已保存列回调功能
 
 ### 0.2.3
 

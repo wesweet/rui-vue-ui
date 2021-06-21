@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件
  * @Author: panrui
  * @Date: 2021-06-07 14:51:40
- * @LastEditTime: 2021-06-09 16:40:50
+ * @LastEditTime: 2021-06-21 15:02:35
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -14,6 +14,7 @@
         :colData="colData"
         :fnSureClick="fnSureClick"
         :fnDelete="fnDelete"
+        :fnOnchangeClick="fnOnchangeClick"
       ></mj-select-col>
     </a-card>
     <a-row type="flex">
@@ -96,6 +97,10 @@ export default {
         option.value = Date.parse(new Date());
         this.colData = this.colData.concat(option);
       }
+    },
+    // 选择组列回调
+    fnOnchangeClick(option) {
+      console.log(option);
     },
     // 确认删除回调
     fnDelete(option) {
