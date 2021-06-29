@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-21 17:30:20
+ * @LastEditTime: 2021-06-29 10:15:46
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -15,8 +15,12 @@
     <a-card v-show="cardFlag" :bordered="false" :style="styleObject">
       <div class="contbox">
         <!-- leftbox -->
-        <div class="wrapbox" style="border-right: 1px solid #eee">
-          <div class="listbox">
+        <div
+          class="wrapbox"
+          style="border-right: 1px solid #eee"
+          v-show="leftBoxFlag"
+        >
+          <div class="listbox" :style="{ height: height - 63 + 'px' }">
             <a-radio-group v-model="radioValue" @change="handRadioChange">
               <a-row
                 type="flex"
@@ -34,13 +38,13 @@
                     {{ item.name }}
                   </a-radio>
                 </a-col>
-                <a-col :span="4" v-if="item.value != -1">
+                <a-col :span="5" v-if="item.value != -1">
                   <a-icon
-                    @click.stop="handDelete(item)"
+                    @click="handEdit(item)"
                     style="margin-right: 10px"
-                    type="delete"
+                    type="edit"
                   />
-                  <a-icon @click="handEdit(item)" type="edit" />
+                  <a-icon @click.stop="handDelete(item)" type="close" />
                 </a-col>
               </a-row>
             </a-radio-group>
@@ -55,7 +59,11 @@
         <!-- /leftbox -->
         <!-- rightbox -->
         <div class="wrapbox" v-show="rightboxFlag">
-          <div class="listbox" style="border-right: 1px solid #eee">
+          <div
+            class="listbox"
+            style="border-right: 1px solid #eee"
+            :style="{ height: height - 63 + 'px' }"
+          >
             <a-checkbox-group
               v-model="checkedList"
               :options="plainOptions"
@@ -86,9 +94,9 @@
           </a-row>
         </div>
         <div class="wrapbox" v-show="rightboxFlag">
-          <div class="listbox">
+          <div class="listbox" :style="{ height: height - 63 + 'px' }">
             <div style="padding: 10px">已选择{{ draggableList.length }}栏</div>
-            <div class="draggable-box">
+            <div class="draggable-box" :style="{ height: height - 113 + 'px' }">
               <draggable v-model="draggableList" @end="handend">
                 <transition-group>
                   <div v-for="(item, index) in draggableList" :key="item.value">
@@ -171,6 +179,16 @@ export default {
       type: Function,
       default: function () {},
     },
+    // 组件弹框高度
+    height: {
+      type: Number,
+      default: 343,
+    },
+    // 是否支持隐藏左侧菜单功能
+    hideLeft: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -188,6 +206,7 @@ export default {
       inputboxFlag: false, // 输入框展开状态
       inputValue: "", // 输入框值
       editValue: "", // 编辑值
+      leftBoxFlag: true, // 左侧菜单展示状态
     };
   },
   // 实例化初始化完成
@@ -214,6 +233,7 @@ export default {
         return item.name == this.radioName;
       }).value;
       this.cardFlag = false;
+      this.leftBoxFlag = true;
     },
     // radio选中
     handRadioChange(e) {
@@ -250,6 +270,9 @@ export default {
       });
       this.draggableList = [].concat(_draggableList);
       this.rightboxFlag = this.inputboxFlag = true;
+      if (this.hideLeft) {
+        this.leftBoxFlag = false;
+      }
     },
     // 弹窗显示隐藏控制
     handCard() {
@@ -303,6 +326,12 @@ export default {
       }
       this.precheckedList = this.checkedList = this.draggableList = [];
       this.inputValue = "";
+      if (status == 1 && this.hideLeft) {
+        this.leftBoxFlag = false;
+      }
+      if (status == 2) {
+        this.leftBoxFlag = true;
+      }
     },
     // 确认按钮
     handSubmit() {
@@ -400,7 +429,7 @@ export default {
     .wrapbox {
       min-width: 250px;
       .listbox {
-        height: 280px;
+        // height: 280px;
         width: 250px;
         box-sizing: border-box;
         overflow-y: auto;
@@ -418,7 +447,7 @@ export default {
           background-color: #eeeeee;
         }
         .draggable-box {
-          height: 230px;
+          // height: 230px;
           padding: 0 10px;
           overflow-y: auto;
           &::-webkit-scrollbar {

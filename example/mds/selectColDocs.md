@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件
  * @Author: panrui
  * @Date: 2021-06-07 14:52:07
- * @LastEditTime: 2021-06-21 15:04:59
+ * @LastEditTime: 2021-06-29 10:10:55
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -16,6 +16,8 @@
   :fnSureClick="fnSureClick"
   :fnDelete="fnDelete"
   :fnOnchangeClick="fnOnchangeClick"
+  :height="height"
+  :hideLeft="hideLeft"
 ></mj-select-col>
 ```
 
@@ -28,5 +30,7 @@
 | fnSureClick     | 保存新的一组列回调函数 | Function | function | false | -              | -                                                            |
 | fnDelete        | 删除新的一组列回调函数 | Function | function | false | -              | -                                                            |
 | fnOnchangeClick | 选择已保存组列回调     | Function | function | false | 当前组包含信息 | -                                                            |
+| height          | 组件高度               | Number   | 343      | false | -              | 0.3.0 新增                                                   |
+| hideLeft        | 隐藏左侧模块           | Boolean  | false    | false | -              | 0.3.0 新增                                                   |
 
 <!-- | defaultValue | 默认选中的值           | String   | -        | false | ------ | -->
