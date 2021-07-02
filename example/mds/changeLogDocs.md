@@ -2,16 +2,21 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-06-29 09:55:29
+ * @LastEditTime: 2021-07-02 17:41:35
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
 
+### 0.3.1
+
+- SelectCol 组件 新增默认显示功能
+- 修改 SelectCol 组件 z-index 值为 99
+
 ### 0.3.0
 
-- SelectCol组件 新增多项自定义参数
+- SelectCol 组件 新增多项自定义参数
 
 ### 0.2.9
 

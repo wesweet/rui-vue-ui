@@ -1,6 +1,6 @@
 {
   "name": "mujoy-ui",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "基于 antd-design-vue 二次封装组件",
   "main": "lib/mj-ui.umd.min",
   "keywords": "mj-ui",

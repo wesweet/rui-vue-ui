@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件
  * @Author: panrui
  * @Date: 2021-06-07 14:51:40
- * @LastEditTime: 2021-06-29 10:17:33
+ * @LastEditTime: 2021-07-02 17:40:29
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -17,6 +17,7 @@
         :fnOnchangeClick="fnOnchangeClick"
         :height="height"
         :hideLeft="hideLeft"
+        :value="value"
       ></mj-select-col>
     </a-card>
     <a-row type="flex">
@@ -90,6 +91,7 @@ export default {
       ],
       height: 250,
       hideLeft: true,
+      value: 1,
     };
   },
   methods: {

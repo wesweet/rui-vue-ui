@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-06-29 10:15:46
+ * @LastEditTime: 2021-07-02 17:44:26
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -189,6 +189,11 @@ export default {
       type: Boolean,
       default: false,
     },
+    // 默认选择的值
+    value: {
+      type: Number,
+      default: -1,
+    },
   },
   data() {
     return {
@@ -276,6 +281,9 @@ export default {
     },
     // 弹窗显示隐藏控制
     handCard() {
+      if (!this.$refs.selectcol) {
+        return;
+      }
       if (!this.initFlag) {
         // 检测组件距离浏览器左侧位置
         this.initFlag = !this.initFlag;
@@ -382,6 +390,18 @@ export default {
         ].concat(n);
       },
     },
+    value: {
+      immediate: true,
+      handler(n) {
+        if (n) {
+          this.handRadioChange({
+            target: {
+              value: n,
+            },
+          });
+        }
+      },
+    },
   },
   computed: {
     // 提交按钮状态
@@ -394,7 +414,7 @@ export default {
 <style lang="scss" scoped>
 .selectColBox {
   position: relative;
-  z-index: 20;
+  z-index: 99;
   display: inline-block;
   color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
