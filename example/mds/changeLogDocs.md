@@ -2,12 +2,17 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-07-02 17:41:35
+ * @LastEditTime: 2021-07-15 15:05:04
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
+
+### 0.3.2
+
+- 修改 CityPicker 组件 市区字段返回错误
+- 修改 CityPicker 组件 省市县改变都返回选中字段
 
 ### 0.3.1
 

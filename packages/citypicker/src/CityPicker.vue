@@ -2,7 +2,7 @@
  * @Description: 城市联动组件
  * @Author: panrui
  * @Date: 2021-06-03 15:46:23
- * @LastEditTime: 2021-06-15 17:53:40
+ * @LastEditTime: 2021-07-15 15:04:08
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -112,6 +112,7 @@ export default {
   methods: {
     // 设置省市区信息
     fnInit(option) {
+      // 找到省份对应的下标
       const index = this.provinces.findIndex((item) => {
         return item.name === option.province;
       });
@@ -161,6 +162,11 @@ export default {
           province: value,
         });
       }
+      this.fnCallback({
+        province: value,
+        city: "",
+        area: "",
+      });
     },
     // 城市改变
     handCityChange(value) {
@@ -175,12 +181,17 @@ export default {
           city: value,
         });
       }
+      this.fnCallback({
+        province: this.provincevalue,
+        city: value,
+        area: "",
+      });
     },
     // 区县改变
     handAreaChange(value) {
       this.fnCallback({
         province: this.provincevalue,
-        city: this.city,
+        city: this.cityvalue,
         area: value,
       });
     },
