@@ -2,7 +2,7 @@
  * @Description: Select组件
  * @Author: panrui
  * @Date: 2021-06-03 12:08:47
- * @LastEditTime: 2021-07-26 16:30:13
+ * @LastEditTime: 2021-07-26 17:13:22
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -26,6 +26,13 @@
 </template>
 <script>
 import selectDocs from "@/mds/selectDocs.md";
+const list = [];
+for (let index = 0; index < 1000; index++) {
+  list.push({
+    value: index + "",
+    name: `热血三国${index}`,
+  });
+}
 export default {
   name: "Select",
   components: {
@@ -33,11 +40,7 @@ export default {
   },
   data() {
     return {
-      list: [
-        { value: "1", name: "热血三国" },
-        { value: "2", name: "热血三国2" },
-        { value: "3", name: "热血三国3" },
-      ],
+      list: list,
       defaultValue: "1",
       width: 200,
     };
