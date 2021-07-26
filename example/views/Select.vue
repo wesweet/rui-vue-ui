@@ -2,7 +2,7 @@
  * @Description: Select组件
  * @Author: panrui
  * @Date: 2021-06-03 12:08:47
- * @LastEditTime: 2021-06-15 17:52:38
+ * @LastEditTime: 2021-07-26 16:30:13
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -13,6 +13,7 @@
         :changeSelect="changeSelect"
         :defaultValue="defaultValue"
         :list="list"
+        :width="width"
         placeholder="请选择"
       />
     </a-card>
@@ -33,17 +34,17 @@ export default {
   data() {
     return {
       list: [
-        { value: 1, name: "热血三国" },
-        { value: 2, name: "热血三国2" },
-        { value: 3, name: "热血三国3" },
+        { value: "1", name: "热血三国" },
+        { value: "2", name: "热血三国2" },
+        { value: "3", name: "热血三国3" },
       ],
-      defaultValue: 1,
+      defaultValue: "1",
+      width: 200,
     };
   },
   methods: {
     changeSelect(option) {
       console.log(option);
-      this.defaultValue = option.value;
     },
   },
 };

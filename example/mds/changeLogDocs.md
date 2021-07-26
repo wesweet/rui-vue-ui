@@ -2,12 +2,15 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-07-15 15:05:04
+ * @LastEditTime: 2021-07-26 16:31:36
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
+
+### 1.0.0
+- 修改select 组件 新增 width属性
 
 ### 0.3.2
 

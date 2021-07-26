@@ -2,7 +2,7 @@
  * @Description: select组件使用文档
  * @Author: panrui
  * @Date: 2021-06-03 12:09:11
- * @LastEditTime: 2021-06-08 14:47:17
+ * @LastEditTime: 2021-07-26 16:43:26
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -24,5 +24,6 @@
 | ------------ | ------------- | -------- | -------- | ----- | ------------------ |
 | list         | 下拉列表      | Array    | []       | true  | ------             |
 | changeSelect | 下拉选择回调  | Function | function | false | 当前选择的游戏信息 |
-| defaultValue | 默认选择项 id | Number   | -        | false | ------             |
+| defaultValue | 默认选择项 id | String   | -        | false | ------             |
+| width        | 组件宽度      | Number   | -        | 150   | ------             |
 | placeholder  | 默认值        | String   | -        | false | ------             |
