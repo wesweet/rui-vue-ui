@@ -2,7 +2,7 @@
  * @Description: 富文本编辑器
  * @Author: panrui
  * @Date: 2021-06-04 15:25:20
- * @LastEditTime: 2021-06-15 17:53:07
+ * @LastEditTime: 2021-09-01 15:35:20
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -10,8 +10,9 @@
   <div class="wangeditor-box">
     <a-card title="Wangeditor组件使用展示" style="width: 1000px">
       <mj-wangeditor
-        :option="option"
         :editCallback="editCallback"
+        :option="option"
+        :editorText="editorText"
       ></mj-wangeditor>
     </a-card>
     <a-row type="flex">
@@ -30,16 +31,17 @@ export default {
   },
   data() {
     return {
+      editorText: "", // 富文本初始化内容
       option: {
-        editorText: "", // 富文本初始化内容
-        uploadFileName: "pic", // 上传的文件名称
-        uploadImgServer: "/temple/uploadImage", // 上传的文件接口地址
+        onchange(option) {
+          console.log(option, 1);
+        },
       },
     };
   },
   methods: {
     editCallback(option) {
-      console.log(option);
+      console.log(option, 2);
     },
   },
 };

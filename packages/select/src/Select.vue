@@ -2,7 +2,7 @@
  * @Description: 下拉选择组件
  * @Author: panrui
  * @Date: 2021-06-03 12:06:40
- * @LastEditTime: 2021-07-26 17:15:53
+ * @LastEditTime: 2021-07-27 11:09:24
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -36,10 +36,7 @@ export default {
       type: Function,
       default: function () {},
     },
-    defaultValue: {
-      type: String,
-      default: "",
-    },
+    defaultValue: [String, Number],
     list: {
       type: Array,
       default() {

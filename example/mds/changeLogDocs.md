@@ -2,13 +2,15 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-07-26 17:16:35
+ * @LastEditTime: 2021-09-01 15:41:28
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
 
+### 1.0.2
+- 修改 wangeditor 组件、支持全字段自定义传入
 ### 1.0.1
 - 修改select 组件 优化只展示100条 超出请使用搜索功能
 ### 1.0.0
