@@ -2,7 +2,7 @@
  * @Description: 富文本组件
  * @Author: panrui
  * @Date: 2021-04-21 18:32:02
- * @LastEditTime: 2021-09-01 15:32:16
+ * @LastEditTime: 2021-09-03 16:34:27
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -100,9 +100,7 @@ export default {
         editor.config = Object.assign({}, editor.config, this.option);
         editor.create();
         // 如果存在默认富文本
-        if (this.editorText) {
-          editor.txt.html(this.editorText);
-        }
+        editor.txt.html(this.editorText);
         this.editor = editor;
       });
     },
