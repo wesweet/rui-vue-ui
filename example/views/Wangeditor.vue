@@ -2,7 +2,7 @@
  * @Description: 富文本编辑器
  * @Author: panrui
  * @Date: 2021-06-04 15:25:20
- * @LastEditTime: 2021-09-03 16:42:07
+ * @LastEditTime: 2021-09-03 17:32:49
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -15,6 +15,7 @@
         :editorText="editorText"
       ></mj-wangeditor>
     </a-card>
+    <!-- <a-button type="primary" @click="handClick"> 修改数据 </a-button> -->
     <a-row type="flex">
       <a-col :span="20" class="markdown-body">
         <wangeditorDocs></wangeditorDocs>
@@ -33,15 +34,15 @@ export default {
     return {
       editorText: "", // 富文本初始化内容
       option: {
-        onchange(option) {
-          console.log(option, 1);
-        },
+        // onchange(option) {
+        // },
       },
     };
   },
   methods: {
-    editCallback(option) {
-      console.log(option, 2);
+    editCallback() {},
+    handClick() {
+      this.editorText += 1;
     },
   },
 };

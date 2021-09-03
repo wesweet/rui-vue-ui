@@ -2,7 +2,7 @@
  * @Description: 富文本组件
  * @Author: panrui
  * @Date: 2021-04-21 18:32:02
- * @LastEditTime: 2021-09-03 16:34:27
+ * @LastEditTime: 2021-09-03 17:31:51
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -35,7 +35,16 @@ export default {
       default: function () {},
     },
   },
-  watch: {},
+  watch: {
+    editorText: {
+      immediate: true,
+      handler(n) {
+        if (this.editor) {
+          this.editor.txt.html.call(this, n);
+        }
+      },
+    },
+  },
   mounted() {
     // 初始化富文本插件
     this.setEditor();
