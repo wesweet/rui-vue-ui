@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:15:00
- * @LastEditTime: 2021-06-09 18:57:42
+ * @LastEditTime: 2021-09-30 11:43:05
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -71,6 +71,7 @@ export default {
       type: Function,
       default: function () {},
     },
+    ident: [String, Number],
   },
   data() {
     return {
@@ -92,6 +93,7 @@ export default {
       if (file.thumbUrl) {
         return true;
       }
+      // 上传图片
       let isJpgOrPng = this.filetype.indexOf(file.type);
       if (isJpgOrPng == -1) {
         this.$message.error("文件上传格式不合法!");
@@ -114,12 +116,11 @@ export default {
         })
       ) {
         this.fileList = fileList;
-        this.fnCallback([].concat(this.fileList));
+        this.fnCallback([].concat(this.fileList), this.ident);
       }
     },
     // 文件删除时回调
-    handRemove() {
-    },
+    handRemove() {},
     handleCancel() {
       this.previewVisible = false;
     },

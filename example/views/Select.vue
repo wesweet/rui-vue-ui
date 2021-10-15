@@ -2,7 +2,7 @@
  * @Description: Select组件
  * @Author: panrui
  * @Date: 2021-06-03 12:08:47
- * @LastEditTime: 2021-07-26 17:13:22
+ * @LastEditTime: 2021-09-30 11:18:50
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -14,6 +14,7 @@
         :defaultValue="defaultValue"
         :list="list"
         :width="width"
+        :ident="ident"
         placeholder="请选择"
       />
     </a-card>
@@ -43,6 +44,8 @@ export default {
       list: list,
       defaultValue: "1",
       width: 200,
+      ident: 1,
+      mode: "multiple",
     };
   },
   methods: {

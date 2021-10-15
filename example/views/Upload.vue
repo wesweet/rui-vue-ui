@@ -2,14 +2,18 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:08:53
- * @LastEditTime: 2021-06-15 17:53:00
+ * @LastEditTime: 2021-09-30 11:27:29
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <div class="upload-box">
     <a-card title="upload组件使用展示" style="width: 500px">
-      <mj-upload :list="form.fileList" :fnCallback="fnCallback"></mj-upload>
+      <mj-upload
+        :list="form.fileList"
+        :fnCallback="fnCallback"
+        :ident="ident1"
+      ></mj-upload>
     </a-card>
     <a-row type="flex">
       <a-col :span="20" class="markdown-body">
@@ -43,11 +47,13 @@ export default {
           // },
         ],
       },
+      ident1: 1,
+      ident2: 2,
     };
   },
   methods: {
-    fnCallback(option) {
-      console.log(option);
+    fnCallback(option, ident) {
+      console.log(option, ident);
     },
     handClick() {
       // this.form.fileList.push({
