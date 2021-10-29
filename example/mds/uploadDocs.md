@@ -10,7 +10,11 @@
 ## 使用
 
 ```html
-<mj-upload :list="fileList" :fnCallback="fnCallback"></mj-upload>
+<mj-upload
+  :list="fileList"
+  :fnCallback="fnCallback"
+  :fnRemove="fnRemove"
+></mj-upload>
 ```
 
 ## API
@@ -23,6 +27,7 @@
 | list       | 默认文件数组     | Array         | []                                     | false | -                   | 格式为{uid:'',name:'',thumbUrl:''} |
 | filetype   | 文件类型         | Array         | ['image/png','image/jpeg','image/jpg'] | false | -                   | -                                  |
 | fnCallback | 选择文件回调     | Function      | function                               | false | 当前已选择文件 list | -                                  |
+| fnRemove   | 删除文件回调     | Function      | function                               | false | 当前删除的文件 file | -                                  |
 
 <!-- | actionUrl    | 自动上传 url     | String   | ''                                     | false | -                   | -                             |
 | isAutoUpload | 是否自动上传     | Boolean  | false                                  | false | -                   | -                             | -->

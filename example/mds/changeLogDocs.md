@@ -2,12 +2,16 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-09-30 10:38:16
+ * @LastEditTime: 2021-10-29 11:23:31
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
+
+### 1.0.6
+
+- 图片上传组件 新增移除图片回调
 
 ### 1.0.5
 

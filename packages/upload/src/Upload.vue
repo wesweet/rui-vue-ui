@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:15:00
- * @LastEditTime: 2021-09-30 11:43:05
+ * @LastEditTime: 2021-10-29 11:12:13
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -71,6 +71,7 @@ export default {
       type: Function,
       default: function () {},
     },
+    fnRemove: { type: Function, default: function () {} },
     ident: [String, Number],
   },
   data() {
@@ -120,7 +121,9 @@ export default {
       }
     },
     // 文件删除时回调
-    handRemove() {},
+    handRemove(file) {
+      this.fnRemove(file)
+    },
     handleCancel() {
       this.previewVisible = false;
     },

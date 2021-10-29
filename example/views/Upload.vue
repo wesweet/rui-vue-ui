@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:08:53
- * @LastEditTime: 2021-09-30 11:27:29
+ * @LastEditTime: 2021-10-29 11:23:48
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -12,6 +12,7 @@
       <mj-upload
         :list="form.fileList"
         :fnCallback="fnCallback"
+        :fnRemove="fnRemove"
         :ident="ident1"
       ></mj-upload>
     </a-card>
@@ -54,6 +55,9 @@ export default {
   methods: {
     fnCallback(option, ident) {
       console.log(option, ident);
+    },
+    fnRemove(file) {
+      console.log(file);
     },
     handClick() {
       // this.form.fileList.push({
