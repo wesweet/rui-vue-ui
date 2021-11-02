@@ -2,7 +2,7 @@
  * @Description: 文件上传
  * @Author: panrui
  * @Date: 2021-06-04 18:15:00
- * @LastEditTime: 2021-10-29 11:12:13
+ * @LastEditTime: 2021-11-02 10:22:58
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -117,12 +117,12 @@ export default {
         })
       ) {
         this.fileList = fileList;
-        this.fnCallback([].concat(this.fileList), this.ident);
+        this.fnCallback([].concat(this.fileList), { ident: this.ident });
       }
     },
     // 文件删除时回调
     handRemove(file) {
-      this.fnRemove(file)
+      this.fnRemove(file, { ident: this.ident });
     },
     handleCancel() {
       this.previewVisible = false;
