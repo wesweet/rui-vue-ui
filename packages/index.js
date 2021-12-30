@@ -2,7 +2,7 @@
  * @Description: 引入组件
  * @Author: panrui
  * @Date: 2021-05-21 18:23:19
- * @LastEditTime: 2021-06-15 17:55:57
+ * @LastEditTime: 2021-12-30 17:02:33
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -15,6 +15,7 @@ import MjDateSelect from "./dateselect";
 import MjUpload from "./upload";
 import MjSelectCol from "./selectcol";
 import MjPreview from "./preview";
+import MjTimeLine from "./timeline";
 
 // 所有组件列表
 const components = [
@@ -27,6 +28,7 @@ const components = [
   MjUpload,
   MjSelectCol,
   MjPreview,
+  MjTimeLine,
 ];
 
 // 定义 install 方法，接收 Vue 作为参数
@@ -54,6 +56,7 @@ export {
   MjUpload,
   MjSelectCol,
   MjPreview,
+  MjTimeLine,
 };
 
 export default {

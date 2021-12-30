@@ -74,6 +74,11 @@ const routes = [
         name: "Preview",
         component: () => import("../views/Preview.vue"),
       },
+      {
+        path: "twitter",
+        name: "twitter",
+        component: () => import("../views/Twitter.vue"),
+      },
     ],
   },
   {
