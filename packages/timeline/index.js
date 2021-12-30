@@ -1,13 +1,13 @@
 /*
- * @Description: 表格展示列组件
+ * @Description: Twitter TimeLine 组件
  * @Author: panrui
  * @Date: 2021-06-07 14:43:36
- * @LastEditTime: 2021-06-08 14:49:08
+ * @LastEditTime: 2021-12-30 10:27:33
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
-import MjSelectCol from "./src/SelectCol";
-MjSelectCol.install = (Vue) => {
-  Vue.component(MjSelectCol.name, MjSelectCol);
+import TimeLine from "./src/TimeLine";
+TimeLine.install = (Vue) => {
+  Vue.component(TimeLine.name, TimeLine);
 };
-export default MjSelectCol;
+export default TimeLine;
