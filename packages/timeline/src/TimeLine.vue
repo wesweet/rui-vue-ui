@@ -2,22 +2,18 @@
  * @Description: Twitter时间线组件
  * @Author: panrui
  * @Date: 2021-12-27 11:19:48
- * @LastEditTime: 2021-12-30 18:16:53
+ * @LastEditTime: 2022-01-21 14:49:18
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
-  <div v-if="installed">
-    <div v-show="option.follow" id="button"></div>
-    <div id="container"></div>
-    <!-- <div v-if="!readly">
-      <img :src="option.imgUrl" />
+  <div>
+    <!-- <div v-show="readly">
+      <div v-show="installed">
+        <div v-show="option.follow" id="button"></div>
+        <div id="container"></div>
+      </div>
     </div> -->
-  </div>
-  <div v-else>
-    <a-spin>
-      <a-icon slot="indicator" type="loading" style="font-size: 24px" spin />
-    </a-spin>
   </div>
 </template>
 <script>
@@ -41,14 +37,16 @@ export default {
           height: 600, // 高度
           limit: undefined, // 限制条数，设置了此字段那么高度无效
           follow: true, // 是否显示关注按钮
-          imgUrl:
-            "https://pic.leduimg.com/pic-ledu-com/productEnvironment/1Kkz5Zw_%E7%B2%BE%E5%93%81%E6%8E%A8%E8%8D%901-%E7%83%AD%E8%A1%80%E4%B8%89%E5%9B%BD1-280x254.jpg",
         };
       },
     },
+    fnCallback: {
+      type: Function,
+      default: function () {},
+    },
   },
   mounted() {
-    this.fnInstall();
+    // this.fnInstall();
   },
   methods: {
     // 安装widgets
@@ -63,8 +61,14 @@ export default {
           })
           .catch((err) => {
             this.readly = false;
+            this.fnCallback(this.readly);
             console.log(err);
           });
+      } else {
+        this.installed = true;
+        this.$nextTick(() => {
+          this.fnInit();
+        });
       }
     },
     // 加载Twitter
@@ -75,6 +79,7 @@ export default {
           .load()
           .then(() => {
             that.readly = true;
+            this.fnCallback(this.readly);
             if (that.option.follow) {
               // 推特按钮
               window.twttr.widgets.createFollowButton(
@@ -93,7 +98,7 @@ export default {
                 // sourceType: "list", // 使用这个变量存在异常 Required parameter list_id -or- [user_id -or- screen_name] with list_slug] is missing or invalid
                 // slug: "national-parks",
               },
-              document.getElementById("container"),
+              document.getElementById(that.option.id),
               {
                 height: that.option.height,
                 chrome: "nofooter",
@@ -103,6 +108,7 @@ export default {
           })
           .catch((err) => {
             that.readly = false;
+            this.fnCallback(this.readly);
             console.log(err);
           });
       });

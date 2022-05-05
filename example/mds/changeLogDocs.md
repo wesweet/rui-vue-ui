@@ -2,12 +2,16 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2021-10-29 11:23:31
+ * @LastEditTime: 2022-01-21 12:59:50
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
+
+### 1.0.11
+
+- 新增推特展示组件
 
 ### 1.0.6
 

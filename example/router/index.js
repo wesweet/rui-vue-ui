@@ -2,7 +2,7 @@
  * @Description:路由定义
  * @Author: panrui
  * @Date: 2021-05-21 18:02:50
- * @LastEditTime: 2021-12-31 15:32:34
+ * @LastEditTime: 2022-01-21 10:48:33
  * @LastEditors: panrui
  * 不忘初心,不负梦想
  */
@@ -74,11 +74,11 @@ const routes = [
         name: "Preview",
         component: () => import("../views/Preview.vue"),
       },
-      // {
-      //   path: "twitter",
-      //   name: "twitter",
-      //   component: () => import("../views/Twitter.vue"),
-      // },
+      {
+        path: "twitter",
+        name: "twitter",
+        component: () => import("../views/Twitter.vue"),
+      },
     ],
   },
   {

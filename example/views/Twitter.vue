@@ -2,14 +2,14 @@
  * @Description: Twitter测试组件
  * @Author: panrui
  * @Date: 2021-06-03 14:30:26
- * @LastEditTime: 2021-12-30 18:02:37
+ * @LastEditTime: 2022-01-21 12:56:09
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 <template>
   <div class="Twitter-box">
     <a-card title="timeline组件使用展示" style="width: 500px">
-      <mj-time-line :option="option"> </mj-time-line>
+      <mj-time-line :option="option" :fnCallback="fnCallback"> </mj-time-line>
     </a-card>
     <a-row type="flex">
       <a-col :span="20" class="markdown-body">
@@ -37,6 +37,9 @@ export default {
   methods: {
     fnSelectYear(option) {
       console.log(option);
+    },
+    fnCallback(status) {
+      console.log(status);
     },
   },
 };
