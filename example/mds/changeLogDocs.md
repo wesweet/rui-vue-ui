@@ -2,12 +2,16 @@
  * @Description: 更新日志文档
  * @Author: panrui
  * @Date: 2021-06-09 16:13:12
- * @LastEditTime: 2022-01-21 12:59:50
+ * @LastEditTime: 2022-05-05 11:56:42
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
 
 ## 更新日志
+
+### 1.0.13
+
+- 修改 SelectCol 组件中外层 z-index 层级
 
 ### 1.0.11
 

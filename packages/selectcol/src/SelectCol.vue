@@ -2,7 +2,7 @@
  * @Description: 表格展示列组件 MjSelectCol
  * @Author: panrui
  * @Date: 2021-06-07 14:44:14
- * @LastEditTime: 2021-12-30 17:50:04
+ * @LastEditTime: 2022-05-05 14:19:48
  * @LastEditors: panrui
  * 不忘初心,不负梦想
 -->
@@ -414,14 +414,14 @@ export default {
 <style lang="scss" scoped>
 .selectColBox {
   position: relative;
-  z-index: 99;
+  // z-index: 99;
   display: inline-block;
   color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
   /deep/ .ant-card {
     position: absolute;
     top: 33px;
-    z-index: 9;
+    z-index: 12;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     .ant-card-body {
